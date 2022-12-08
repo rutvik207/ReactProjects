@@ -1,0 +1,123 @@
+.body {
+  margin: 0;
+  font-weight: 400;
+  background: #ffffff;
+  color: #000000;
+  line-height: 1.5;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.login-banner {
+  display: flex;
+}
+
+.errorField {
+  color: red; 
+  margin-top: 0;
+}
+
+.ls-banner {
+  background: url('./images/Group 15826.png') no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 65%;
+  height: 100vh;
+}
+
+.rg-banner {
+  background: url('./images/Group 15830.png');
+  width: 65%;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: center;
+}
+
+.login-area {
+  display: flex;
+  width: 35%;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-area.sign-up {
+  padding: 30px 90px;
+}
+
+.login-area .login-heading h1 {
+
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 32px;
+  color: #000000;
+  text-align: center;
+}
+
+.login-area .login-heading p {
+
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 32px;
+  color: rgb(0 0 0 / 50%);
+  text-align: center;
+}
+
+.login-area .login-inner {
+  width: 60%;
+}
+
+.login-area .login-inner input {
+  display: block;
+  width: 90%;
+  background: #F5F5F5;
+  padding: 12px 12px;
+  border: 1px solid rgb(0 0 0 / 70%);
+  border-radius: 10px !important;
+  margin: 0 auto 10px;
+}
+
+.login-area .login-inner input::placeholder {
+
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.03em;
+  color: rgb(0 0 0 / 75%);
+}
+
+.login-area .login-inner input:focus {
+  border: 1px solid #0E7F3F;
+  box-shadow: none;
+}
+
+.login-area .login-inner .lss-btn {
+  display: flex;
+  justify-content: center;
+}
+
+.login-area .login-inner .lss-btn button {
+  padding: 12px 40px;
+  background: #2B75BB;
+  border: 1px solid #2B75BB;
+  border-radius: 10px;
+  box-shadow: 0px 0px 14px rgb(43 117 187 / 70%);
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  color: #FFFFFF;
+  margin: 0 10px;
+  transition: 0.5s ease-in-out;
+}
+
+.login-area .login-inner .lss-btn button:hover {
+  background: #ffffff;
+  color: #2B75BB;
+}
+
+.login-area .login-inner h2 {
+  font-size: 16px;
+  line-height: 16px;
+  color: rgba(0, 0, 0, 0.7);
+  text-align: center;
+}

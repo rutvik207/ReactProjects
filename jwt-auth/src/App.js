@@ -3,6 +3,7 @@ import './App.css';
 import Home from './home/home';
 import LoginForm from './login-registration/login';
 import Register from './login-registration/register';
+import DashBoard from './dashboard-history/dashBoard';
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
 <Route path="/" element={<Navigate to="/home" />} />
 <Route path="/home" element={<Home/>} />
 <Route path="/login" element={<LoginForm/>} />
-<Route path="/register" element={<Register/>} />
+<Route path="/user/register" element={<Register/>} />
+<Route path="/dashBoard" element={<DashBoard/>}/>
 </Routes>
 </>
   );

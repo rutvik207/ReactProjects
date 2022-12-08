@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-  // const dispatch = useDispatch();
   const navigate = useNavigate();
   const [errorMsg, setErrorMsg] = useState({
+    detailFetchErrorMsg: "",
     nameErrorMsg: "",
     accountNumberErrorMsg: "",
     aadharNumberErrorMsg: "",
@@ -17,48 +18,42 @@ const Register = () => {
   const panNumber = useRef();
   const balance = useRef();
 
-  // useEffect(()=>{
-  //   const tocken = localStorage.getItem('token')
-  //   if(tocken){
-  //     navigate("/teams");
-  //   }
-  // })
-
-  // const login =(e)=>{
-  //   e.preventDefault();
-  //   axiox.post("http://localhost:5000/api/auth/login",{
-  //     email,
-  //     password
-  //   }).then((response)=>{
-  //     localStorage.setItem("login",JSON.stringify({
-  //       userLogin:true,
-  //       token:response.data.access_token
-  //     }))
-  //     setErrorMsg({
-  //             nameErrorMsg: "responseOfData.error.message",
-  //           });
-  //   }).catch((error)=>  setErrorMsg({
-  //           nameErrorMsg: error,
-  //         }));
-
-  // }
-
-  const onLogin = (aEvent) => {
+  const onSubmit = (aEvent) => {
     aEvent.preventDefault();
-    // const enteredEmail = email.current.value;
-    // const enteredPassword = password.current.value;
-    if (!isFormValid()) {
+    const enteredName = name.current.value;
+    const enteredAccountNumber = accountNumber.current.value;
+    const enteredaAdharNumber = aadharNumber.current.value;
+    const enteredPanNumber = panNumber.current.value;
+    const enteredBalance = balance.current.value;
+
+    console.log("jbchjbsdcjhb");
+    if (
+      !isFormValid(
+        enteredName,
+        enteredAccountNumber,
+        enteredaAdharNumber,
+        enteredPanNumber,
+        enteredBalance
+      )
+    ) {
       console.log("jsjshshshshshshshshsh");
       return;
     }
-    /* const blog = { enteredEmail, enteredPassword };
-    fetchLogin(blog); */
+    const inputData = { name, accountNumber, aadharNumber, panNumber, balance };
+    // fetchLogin(inputData);
   };
 
-  /* const fetchLogin = async (blog) => {
+  const fetchLogin = async (inputData) => {
     const responseOfApi = await fetch("http://localhost:3000/users", {
       method: "POST",
-      body: JSON.stringify(blog),
+      body: JSON.stringify({
+        name: inputData.name,
+        account_number: inputData.accountNumber,
+        aadhar_number: inputData.aadharNumber,
+        pan_number: inputData.panNumber,
+        balance: inputData.balance,
+        start_balance: inputData.balance,
+      }),
       headers: {
         "Content-Type": "application/json",
       },
@@ -67,21 +62,24 @@ const Register = () => {
     const responseOfData = await responseOfApi.json();
     if (!responseOfApi.ok) {
       setErrorMsg({
-        nameErrorMsg: responseOfData.error.message,
+        detailFetchErrorMsg: responseOfData.error.message,
       });
       return;
     }
+  };
 
-    // dispatch(authActions.login(responseOfData.idToken));
-    // navigate("/teams");
-  }; */
-
-  const isFormValid = () => {
-    const nameErrorMsg = validateAccount(name);
-    const accountNumberErrorMsg = validateName(accountNumber);
-    const aadharNumberErrorMsg = validatePan_AdharNumber(aadharNumber);
-    const panNumberErrorMsg = validatePan_AdharNumber(panNumber);
-    const balanceErrorMsg = validateBalance(balance);
+  const isFormValid = (
+    enteredName,
+    enteredAccountNumber,
+    enteredaAdharNumber,
+    enteredPanNumber,
+    enteredBalance
+  ) => {
+    const nameErrorMsg = isNameValid(enteredName);
+    const accountNumberErrorMsg = isValid(enteredAccountNumber);
+    const aadharNumberErrorMsg = isValid(enteredaAdharNumber);
+    const panNumberErrorMsg = isValid(enteredPanNumber);
+    const balanceErrorMsg = isBalanceValid(enteredBalance);
 
     setErrorMsg({
       nameErrorMsg: nameErrorMsg,
@@ -102,18 +100,74 @@ const Register = () => {
     }
   };
 
-  const validateField = (aUserInput) => {
-    return !aUserInput ? `Please Enter Valid Input` : "";
+  const isNameValid = (aUserInput) => {
+    return !aUserInput ? `Name is required` : "";
   };
 
-  phoneNoValidator = (aUserInput) => {
+  const isValid = (aUserInput) => {
     return aUserInput === ""
-      ? "Phone is required"
-      : this.state.user.phone.length !== 10
-      ? "Phone no is 10 digit"
+      ? "Fill the details"
+      : aUserInput.length < 8
+      ? "Enter valid accountNumber"
       : "";
   };
 
-  return <h1>"hghg</h1>;
+  const isBalanceValid = (aUserInput) => {
+    return aUserInput === ""
+      ? "Fill the details"
+      : aUserInput < 1000
+      ? "Enter valid Balance"
+      : "";
+  };
+
+  const onAbort = () => {
+    navigate("/home");
+  };
+
+  return (
+    <main className="body">
+      <section className="login">
+        <div className="login-banner">
+          <div className="ls-banner rg-banner"></div>
+          <div className="login-area">
+            <div className="login-heading">
+              <h1>Create Account</h1>
+            </div>
+            <div className="login-inner">
+              <input type="text" placeholder="Name" ref={name} />
+              <p className="errorField">{errorMsg.nameErrorMsg}</p>
+              <input
+                type="number"
+                placeholder="AccountNumber"
+                ref={accountNumber}
+              />
+              <p className="errorField">{errorMsg.accountNumberErrorMsg}</p>
+              <input
+                type="text"
+                placeholder="AadharNumber"
+                ref={aadharNumber}
+              />
+              <p className="errorField">{errorMsg.aadharNumberErrorMsg}</p>
+
+              <input type="text" placeholder="PanNumber" ref={panNumber} />
+              <p className="errorField">{errorMsg.panNumberErrorMsg}</p>
+
+              <input type="number" placeholder="Balance" ref={balance} />
+              <p className="errorField">{errorMsg.balanceErrorMsg}</p>
+
+              <div className="lss-btn">
+                <button type="submit" className="btn" onClick={onSubmit}>
+                  Submit
+                </button>
+                <button type="submit" className="btn" onClick={onAbort}>
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
 };
 export default Register;

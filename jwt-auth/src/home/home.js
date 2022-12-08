@@ -13,13 +13,10 @@ const navigate = useNavigate();
   navigate("/user/register");
  }
   return(
-    <form className="box">
-    <h1 className="heading">WELCOME</h1>
-    <div className="button-wrapper">
-    <button className="login" onClick={redirectToLogin}>Login</button>
-    <button className="login" onClick={redirectToRegistration}>Register<i class="fa fa-user" aria-hidden="true"></i></button>
+    <div className="hello">
+    <button className="loginHome1" onClick={redirectToLogin}>Login</button>
+    <button className="loginHome2" onClick={redirectToRegistration}>Register</button>
     </div>
-    </form>
   )
 }
 export default Home;
