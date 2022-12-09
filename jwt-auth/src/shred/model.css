@@ -1,37 +1,3 @@
-.tableData {
-  background-color: rgba(209, 218, 97, 0.63);
-  border: 5px solid rgb(136, 187, 136);
-  width: 60%;
-  width: 500px;
-}
-.Button{
-  margin-bottom: 20px;
-}
-th {
-  border-bottom: 1px solid black;
-}
-.errorField{
-  color: red;
-  margin-bottom:30px ;
-}
-td {
-  text-align: center;
-}
-.playerDataTable{
-width: 100%;
-display: flex;
-flex-direction: column;
-justify-content: center; 
-align-items: center; 
-gap: 30px;
-}
-.addButton{
-  height: 30px;
- position: absolute;
- right: 0;
- top: -7px;
-  
-}
 .wrapper {
   position: absolute;
   top: 50%;
@@ -47,30 +13,11 @@ gap: 30px;
   flex-direction: column;
   gap: 13px;
 }
-.player-box label{
-  font-size: 18px;
-}
-.player-box input , .player-box select{
-  height: 22px;
-  border: 1px solid black ;
-
-}
 .player-box-name input{
   width: 150px;
   margin-left: 20px;
   border: 1px solid black;
 }
-.player-box-role select{
-  width: 100px;
-  margin-left: 20px;
-  border: 1px solid black;
-
-
-}
-.wrapper p {
-     color: red;
-}
-
 .button-form {
   display: flex;
   justify-content: center;
@@ -79,22 +26,4 @@ gap: 30px;
 }
 .button-form button{
 width: 60px;
-}
-.inputfields ,.delete-box{
-  position: absolute;
-  z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.4);
-}
-.heading{
-  position: relative;
-  display: flex;
-  justify-content: center;
-  width: 500px;
-  margin-bottom: 50px;
 }

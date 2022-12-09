@@ -1,21 +1,21 @@
 {
   "users": [
     {
-      "id": 123,
       "name": "Harsh Gandhi",
       "account_number": 12345678,
       "aadhar_number": 12345678,
       "pan_number": 12345678,
       "balance": 40000,
       "start_balance": 1000,
-      "history": [
-        {
-          "id": 1,
-          "date": 12,
-          "type": "deposite",
-          "amount": 50
-        }
-      ]
+      "id": 124
+    }
+  ],
+  "history": [
+    {
+      "id": 1,
+      "date": "12-05-2023",
+      "type": "deposit",
+      "amount": 50
     }
   ]
 }

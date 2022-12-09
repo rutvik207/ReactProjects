@@ -39,20 +39,20 @@ const Register = () => {
       console.log("jsjshshshshshshshshsh");
       return;
     }
-    const inputData = { name, accountNumber, aadharNumber, panNumber, balance };
-    // fetchLogin(inputData);
+    const inputData = { enteredName, enteredAccountNumber, enteredaAdharNumber, enteredPanNumber, enteredBalance };
+    fetchLogin(inputData);
   };
 
   const fetchLogin = async (inputData) => {
     const responseOfApi = await fetch("http://localhost:3000/users", {
       method: "POST",
       body: JSON.stringify({
-        name: inputData.name,
-        account_number: inputData.accountNumber,
-        aadhar_number: inputData.aadharNumber,
-        pan_number: inputData.panNumber,
-        balance: inputData.balance,
-        start_balance: inputData.balance,
+        name: inputData.enteredName,
+        account_number: inputData.enteredAccountNumber,
+        aadhar_number: inputData.enteredaAdharNumber,
+        pan_number: inputData.enteredPanNumber,
+        balance: inputData.enteredBalance,
+        start_balance: inputData.enteredBalance,
       }),
       headers: {
         "Content-Type": "application/json",

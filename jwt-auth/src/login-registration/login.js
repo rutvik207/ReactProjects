@@ -9,7 +9,7 @@ const LoginForm = () => {
   const navigate = useNavigate();
   const user = useSelector((aState) => aState.user.user);
   const [errorMsg, setErrorMsg] = useState({
-    usersFetchErrorMsg: "",
+    fetchErrorMsg: "",
     accountNumberErrorMsg: "",
     aadharNumberErrorMsg: "",
     loginErrorMsg: "",
@@ -20,6 +20,7 @@ const LoginForm = () => {
 
   useEffect(() => {
     fetchUser();
+    fetchStatement();
   }, []);
 
   const fetchUser = async () => {
@@ -27,13 +28,27 @@ const LoginForm = () => {
     const responseOfData = await responseOfApi.json();
     if (!responseOfApi.ok) {
       setErrorMsg({
-        usersFetchErrorMsg: responseOfData.error.message,
+        fetchErrorMsg: responseOfData.error.message,
       });
       return;
     }
     console.log("responseOfData===================>", responseOfData);
     dispatch(userActions.storeUsers(responseOfData));
   };
+
+ const fetchStatement =async()=>{
+  const responseOfApi = await fetch("http://localhost:3000/history");
+  const responseOfData = await responseOfApi.json();
+  if (!responseOfApi.ok) {
+    setErrorMsg({
+      fetchErrorMsg: responseOfData.error.message,
+    });
+    return;
+  }
+  console.log("responseOfData===================>", responseOfData);
+  dispatch(userActions.storeStatement(responseOfData));
+
+  }
   const onLogin = (aEvent) => {
     aEvent.preventDefault();
     const enteredAccountNumber = accountNumber.current.value;
@@ -58,6 +73,7 @@ const LoginForm = () => {
       return;
     }
     dispatch(userActions.storeLoggedUser(selectedUser));
+    dispatch(userActions.isLogin(true))
     navigate("/dashBoard")
   };
 

@@ -1,0 +1,9 @@
+/* .rutvik{
+  position: sticky;
+  top: 0;
+  width: 100%;
+} */
+.rutvik123{
+  display: flex;
+  flex-direction: column;
+}

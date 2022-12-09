@@ -14,22 +14,24 @@ const takeMoneyInput =(e)=>{
   }
 
   return (
+    <section className="formback">
     <div className="wrapper">
       <div className="player-box-name">
-        <label>Name</label>
         <input
+        placeholder="Enter Your Amount"
           type="text"
           name="name"
           ref={amount}
         />
       </div>
       <div className="button-form">
-        <button onClick={takeMoneyInput}>
+        <button onClick={takeMoneyInput} className="btn-form">
           add
         </button>
-        <button onClick={aProps.hideModel}>Cancel</button>
+        <button onClick={aProps.hideModel} className="btn-form">Cancel</button>
       </div>
     </div>
+    </section>
   );
 };
 export default UserForm;
