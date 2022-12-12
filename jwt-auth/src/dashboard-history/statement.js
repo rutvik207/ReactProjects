@@ -3,20 +3,20 @@ import { useSelector } from "react-redux";
 import "./statement.css";
 
 const Statement = () => {
-  const [selectedUserStatments, setSelectedUserStatments] = useState();
+  const [selectedUserStatements, setSelectedUserStatements] = useState();
   const loggedUser = useSelector((aState) => aState.user.loggedUserDetails);
-  // const users = useSelector((aState) => aState.user.user);
-  const stateMents = useSelector((aState) => aState.user.stateMents);
+  const stateMents = useSelector((aState) => aState.statement.stateMents);
+  let availableBalance =loggedUser.start_balance;
 
   useEffect(() => {
-    const selectedUserStatments = stateMents.filter(
+    const selectedUserStatements = stateMents.filter(
       (aData) => aData.userId === loggedUser.id
     );
     console.log(
-      "selectedUserStatments=======================",
-      selectedUserStatments
+      "selectedUserStatements=======================",
+      selectedUserStatements
     );
-    setSelectedUserStatments(selectedUserStatments);
+    setSelectedUserStatements(selectedUserStatements);
     console.log("loggedUser====================", loggedUser);
   }, []);
   const getCharge = (aAmount, aCharge) => {
@@ -24,15 +24,15 @@ const Statement = () => {
     return charge;
   };
   const withdraw = (aAmount) => {
-    if (aAmount >= 100 && aAmount <= 500) {
+    if (aAmount >= 10000 && aAmount <= 19999) {
       const charge = getCharge(aAmount, 1);
       return charge;
     }
-    if (aAmount >= 600 && aAmount <= 1000) {
+    if (aAmount >= 20000 && aAmount <= 39999) {
       const charge = getCharge(aAmount, 2);
       return charge;
     }
-    if (aAmount >= 1100) {
+    if (aAmount >= 40000) {
       const charge = getCharge(aAmount, 5);
       return charge;
     }
@@ -65,9 +65,24 @@ const Statement = () => {
     );
   };
 
-  // console.log("widrwal =-=-=--=-==->", withdraw(20000))
+
+  const renderUpdateBalance =(type,amount)=>{
+   const updatedBalance = type === "deposit" ? (availableBalance -
+      (type === "withdraw"
+        ? withdraw(amount)
+        : type === "deposit"
+        ? deposit(amount)
+        : neft(amount)) + amount) : (availableBalance -
+          (type === "withdraw"
+            ? withdraw(amount)
+            : type === "deposit"
+            ? deposit(amount)
+            : neft(amount))-amount)
+            availableBalance =updatedBalance;
+            return updatedBalance;
+  }
   const renderStatement = () => {
-    return selectedUserStatments.map((aData, index) => {
+    return selectedUserStatements.map((aData, index) => {
       return (
         <tr className={(aData.type === "withdraw" || aData.type === "neft") ? "red" : "green"} key={aData.id}>
           <td>{index + 1}</td>
@@ -81,12 +96,7 @@ const Statement = () => {
               : neft(aData.amount)}
           </td>
           <td>
-            {loggedUser.start_balance -
-              (aData.type === "withdraw"
-                ? withdraw(aData.amount)
-                : aData.type === "deposit"
-                ? deposit(aData.amount)
-                : neft(aData.amount))}
+            {renderUpdateBalance(aData.type,aData.amount)}
           </td>
         </tr>
       );
@@ -97,7 +107,7 @@ const Statement = () => {
       <table className="tableData">
         <tbody>
           {renderPlayerListHeader()}
-          {selectedUserStatments && renderStatement()}
+          {selectedUserStatements && renderStatement()}
         </tbody>
       </table>
     </div>

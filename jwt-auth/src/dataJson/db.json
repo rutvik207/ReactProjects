@@ -11,42 +11,21 @@
     },
     {
       "name": "rutvik",
-      "account_number": "20202020",
-      "aadhar_number": "20202020",
-      "pan_number": "20202020",
-      "balance": 59900,
+      "account_number": "23232323",
+      "aadhar_number": "23232323",
+      "pan_number": "23232323",
+      "balance": 49000,
       "start_balance": 50000,
       "id": 128
     }
   ],
   "history": [
     {
-      "userId": 127,
-      "date": "11/12/2022",
-      "type": "neft",
-      "amount": 800,
-      "id": 6
-    },
-    {
-      "userId": 128,
-      "date": "12/12/2022",
-      "type": "deposit",
-      "amount": 10000,
-      "id": 7
-    },
-    {
       "userId": 128,
       "date": "12/12/2022",
       "type": "withdraw",
-      "amount": 9900,
-      "id": 8
-    },
-    {
-      "userId": 128,
-      "date": "12/12/2022",
-      "type": "deposit",
-      "amount": 10000,
-      "id": 9
+      "amount": 1000,
+      "id": 1
     }
   ]
 }

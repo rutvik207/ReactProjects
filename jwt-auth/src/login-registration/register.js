@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
@@ -22,27 +22,25 @@ const Register = () => {
     aEvent.preventDefault();
     const enteredName = name.current.value;
     const enteredAccountNumber = accountNumber.current.value;
-    const enteredaAdharNumber = aadharNumber.current.value;
+    const enteredAdharNumber = aadharNumber.current.value;
     const enteredPanNumber = panNumber.current.value;
     const enteredBalance = balance.current.value;
 
-    console.log("jbchjbsdcjhb");
     if (
       !isFormValid(
         enteredName,
         enteredAccountNumber,
-        enteredaAdharNumber,
+        enteredAdharNumber,
         enteredPanNumber,
         enteredBalance
       )
     ) {
-      console.log("jsjshshshshshshshshsh");
       return;
     }
     const inputData = {
       enteredName,
       enteredAccountNumber,
-      enteredaAdharNumber,
+      enteredAdharNumber,
       enteredPanNumber,
       enteredBalance,
     };
@@ -55,7 +53,7 @@ const Register = () => {
       body: JSON.stringify({
         name: inputData.enteredName,
         account_number: inputData.enteredAccountNumber,
-        aadhar_number: inputData.enteredaAdharNumber,
+        aadhar_number: inputData.enteredAdharNumber,
         pan_number: inputData.enteredPanNumber,
         balance: +inputData.enteredBalance,
         start_balance: +inputData.enteredBalance,
@@ -78,13 +76,13 @@ const Register = () => {
   const isFormValid = (
     enteredName,
     enteredAccountNumber,
-    enteredaAdharNumber,
+    enteredAdharNumber,
     enteredPanNumber,
     enteredBalance
   ) => {
     const nameErrorMsg = isNameValid(enteredName);
     const accountNumberErrorMsg = isValid(enteredAccountNumber);
-    const aadharNumberErrorMsg = isValid(enteredaAdharNumber);
+    const aadharNumberErrorMsg = isValid(enteredAdharNumber);
     const panNumberErrorMsg = isValid(enteredPanNumber);
     const balanceErrorMsg = isBalanceValid(enteredBalance);
 

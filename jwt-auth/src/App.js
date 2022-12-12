@@ -10,7 +10,7 @@ import { useEffect } from "react";
 import Statement from "./dashboard-history/statement";
 
 function App() {
-  const isLogin = useSelector((aState) => aState.user.isLogin);
+  const isLogin = useSelector((aState) => aState.login.isLogin);
   const navigate = useNavigate();
   useEffect(()=>{
     if(!isLogin){

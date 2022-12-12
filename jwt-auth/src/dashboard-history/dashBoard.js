@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import UserForm from "../shred/model";
+import TransationForm from "../shred/model";
 import "./dashBoard.css";
-import { userActions } from "../login-registration/store/loginRegisterStore";
+import { userActions } from "../home/store/userStore";
+import { statementAction } from "./store/statementStore";
 
 const DashBoard = () => {
   const loggedUser = useSelector((aState) => aState.user.loggedUserDetails);
-  // const users = useSelector((aState) => aState.user.user);
   const [actionType, setActionType] = useState();
   const [showModel, setShowModel] = useState(false);
   const [error, setError] = useState();
@@ -24,11 +24,13 @@ const DashBoard = () => {
   };
 
   const hideModel = () => {
+    console.log("rutvik")
     setShowModel(!showModel);
   };
 
   const checkType = (aAmount) => {
     if (actionType === "withdraw") {
+      console.log(aAmount);
       withdraw(aAmount);
     }
     if (actionType === "deposit") {
@@ -63,7 +65,7 @@ const DashBoard = () => {
       setError(responseOfData.error.message);
       return;
     }
-    dispatch(userActions.addStatement(responseOfData));
+    dispatch(statementAction.addStatement(responseOfData));
     dispatch(userActions.upDateBalance(aAddBalance));
   };
 
@@ -107,9 +109,13 @@ const DashBoard = () => {
   };
 
   const withdraw = (aAmount) => {
+    console.log(typeof loggedUser.balance);
+    console.log(typeof aAmount);
+    console.log(aAmount);
     let statement, balance;
     switch (true) {
       case loggedUser.balance <= aAmount:
+      console.log("ghuysoke nay");
         setError("sorry sir you dont have a enough balance");
         break;
       case aAmount >= 10000 && aAmount <= 19999:
@@ -243,7 +249,7 @@ const DashBoard = () => {
         </div>
       </div>
 
-      {showModel && <UserForm message={message} errorMsg={error} actionType={actionType} checkType={checkType} hideModel={hideModel} />}
+      {showModel && <TransationForm message={message} errorMsg={error} actionType={actionType} checkType={checkType} hideModel={hideModel} />}
     </>
   );
 };

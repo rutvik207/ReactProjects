@@ -2,14 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./loginRegister.css";
-import { userActions } from "./store/loginRegisterStore";
-
+import { userActions } from "../home/store/userStore";
+import { authActions } from "./store/loginRegisterStore";
 const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((aState) => aState.user.user);
   const [errorMsg, setErrorMsg] = useState({
-    fetchErrorMsg: "",
     accountNumberErrorMsg: "",
     aadharNumberErrorMsg: "",
     loginErrorMsg: "",
@@ -18,42 +17,11 @@ const LoginForm = () => {
   const accountNumber = useRef();
   const adharNumber = useRef();
 
-  useEffect(() => {
-    fetchUser();
-    fetchStatement();
-  }, []);
-
-  const fetchUser = async () => {
-    const responseOfApi = await fetch("http://localhost:3000/users");
-    const responseOfData = await responseOfApi.json();
-    if (!responseOfApi.ok) {
-      setErrorMsg({
-        fetchErrorMsg: responseOfData.error.message,
-      });
-      return;
-    }
-    console.log("responseOfData===================>", responseOfData);
-    dispatch(userActions.storeUsers(responseOfData));
-  };
-
- const fetchStatement =async()=>{
-  const responseOfApi = await fetch("http://localhost:3000/history");
-  const responseOfData = await responseOfApi.json();
-  if (!responseOfApi.ok) {
-    setErrorMsg({
-      fetchErrorMsg: responseOfData.error.message,
-    });
-    return;
-  }
-  console.log("responseOfData===================>", responseOfData);
-  dispatch(userActions.storeStatement(responseOfData));
-  }
   const onLogin = (aEvent) => {
     aEvent.preventDefault();
     const enteredAccountNumber = accountNumber.current.value;
     const enteredAadharNumber = adharNumber.current.value;
     if (!isFormValid(enteredAccountNumber, enteredAadharNumber)) {
-      console.log("jsjshshshshshshshshsh");
       return;
     }
     renderUserDetails(enteredAccountNumber, enteredAadharNumber);
@@ -72,7 +40,7 @@ const LoginForm = () => {
       return;
     }
     dispatch(userActions.storeLoggedUser(selectedUser));
-    dispatch(userActions.isLogin(true))
+    dispatch(authActions.isLogin(true))
     navigate("/dashBoard")
   };
 

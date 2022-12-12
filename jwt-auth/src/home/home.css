@@ -1,4 +1,4 @@
-.hello {
+.root {
   background: url('../login-registration/images/6974840_4365.jpg');
   height: 100vh;
   width: 100%;
@@ -21,6 +21,16 @@
   padding: 0 1rem;
 
 }
+.error-Blog{
+  position: absolute;
+  top: 75%;
+left: 50%;
+background-color: white;
+}
+.error-Blog p{
+  color: red;
+}
+
 
 .loginHome1 {
   position: absolute;

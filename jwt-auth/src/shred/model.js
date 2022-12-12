@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import "./model.css";
 
-const UserForm = (aProps) => {
+const TransationForm = (aProps) => {
 
   const amount =useRef();
 
@@ -10,9 +10,8 @@ const takeMoneyInput =(e)=>{
   e.preventDefault();
   const inputAmount = +amount.current.value;
   aProps.checkType(inputAmount);
-  if(aProps.errorMsg){
-    console.log(aProps.errorMsg);
-    console.log("mehuna")
+  if(aProps.errorMsg || aProps.message){
+    console.log("hello here");
     return;
   }
   aProps.hideModel();
@@ -24,7 +23,7 @@ const takeMoneyInput =(e)=>{
       <div className="inner-form">
         <input
         placeholder={(aProps.actionType != "saving") ? "Enter Your Amount" : "Enter Your Days"}
-          type="number"
+          type="text"
           name="name"
           ref={amount}
         />
@@ -41,4 +40,4 @@ const takeMoneyInput =(e)=>{
     </div>
   );
 };
-export default UserForm;
+export default TransationForm;
