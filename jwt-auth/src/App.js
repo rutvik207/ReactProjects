@@ -12,11 +12,11 @@ import Statement from "./dashboard-history/statement";
 function App() {
   const isLogin = useSelector((aState) => aState.user.isLogin);
   const navigate = useNavigate();
-  // useEffect(()=>{
-  //   if(!isLogin){
-  //     navigate("/home")
-  //   }
-  // },[])
+  useEffect(()=>{
+    if(!isLogin){
+      navigate("/home")
+    }
+  },[])
   return (
     <>
       <div className="rutvik123">

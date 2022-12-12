@@ -47,7 +47,6 @@ const LoginForm = () => {
   }
   console.log("responseOfData===================>", responseOfData);
   dispatch(userActions.storeStatement(responseOfData));
-
   }
   const onLogin = (aEvent) => {
     aEvent.preventDefault();
@@ -122,7 +121,7 @@ const LoginForm = () => {
               />
               <p className="errorField">{errorMsg.aadharNumberErrorMsg}</p>
               <p className="errorField">{errorMsg.loginErrorMsg}</p>
-              <div className="lss-btn">
+              <div className="btn-ls">
                 <button type="submit" className="btn" onClick={onLogin}>
                   Login
                 </button>

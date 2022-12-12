@@ -1,21 +1,52 @@
 {
   "users": [
     {
-      "name": "Harsh Gandhi",
-      "account_number": 12345678,
-      "aadhar_number": 12345678,
-      "pan_number": 12345678,
-      "balance": 40000,
-      "start_balance": 1000,
-      "id": 124
+      "name": "madhav",
+      "account_number": "52525252",
+      "aadhar_number": "52525252",
+      "pan_number": "21212121",
+      "balance": 5030,
+      "start_balance": 5030,
+      "id": 127
+    },
+    {
+      "name": "rutvik",
+      "account_number": "20202020",
+      "aadhar_number": "20202020",
+      "pan_number": "20202020",
+      "balance": 59900,
+      "start_balance": 50000,
+      "id": 128
     }
   ],
   "history": [
     {
-      "id": 1,
-      "date": "12-05-2023",
+      "userId": 127,
+      "date": "11/12/2022",
+      "type": "neft",
+      "amount": 800,
+      "id": 6
+    },
+    {
+      "userId": 128,
+      "date": "12/12/2022",
       "type": "deposit",
-      "amount": 50
+      "amount": 10000,
+      "id": 7
+    },
+    {
+      "userId": 128,
+      "date": "12/12/2022",
+      "type": "withdraw",
+      "amount": 9900,
+      "id": 8
+    },
+    {
+      "userId": 128,
+      "date": "12/12/2022",
+      "type": "deposit",
+      "amount": 10000,
+      "id": 9
     }
   ]
 }

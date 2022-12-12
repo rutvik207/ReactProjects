@@ -4,34 +4,41 @@ import "./model.css";
 
 const UserForm = (aProps) => {
 
-const amount =useRef();
+  const amount =useRef();
+
 const takeMoneyInput =(e)=>{
   e.preventDefault();
-  const inputAmount = amount.current.value;
-  console.log(inputAmount);
+  const inputAmount = +amount.current.value;
   aProps.checkType(inputAmount);
+  if(aProps.errorMsg){
+    console.log(aProps.errorMsg);
+    console.log("mehuna")
+    return;
+  }
   aProps.hideModel();
   }
 
   return (
-    <section className="formback">
+    <div className="model-form">
     <div className="wrapper">
-      <div className="player-box-name">
+      <div className="inner-form">
         <input
-        placeholder="Enter Your Amount"
-          type="text"
+        placeholder={(aProps.actionType != "saving") ? "Enter Your Amount" : "Enter Your Days"}
+          type="number"
           name="name"
           ref={amount}
         />
       </div>
-      <div className="button-form">
+      <p>{aProps.errorMsg}</p>
+      <h3>{aProps.message}</h3>
+      <div className="btn-ls">
         <button onClick={takeMoneyInput} className="btn-form">
           add
         </button>
         <button onClick={aProps.hideModel} className="btn-form">Cancel</button>
       </div>
     </div>
-    </section>
+    </div>
   );
 };
 export default UserForm;

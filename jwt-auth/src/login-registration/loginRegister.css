@@ -91,12 +91,12 @@
   box-shadow: none;
 }
 
-.login-area .login-inner .lss-btn {
+.login-area .login-inner .btn-ls {
   display: flex;
   justify-content: center;
 }
 
-.login-area .login-inner .lss-btn button {
+.login-area .login-inner .btn-ls button {
   padding: 12px 40px;
   background: #2B75BB;
   border: 1px solid #2B75BB;
@@ -110,7 +110,7 @@
   transition: 0.5s ease-in-out;
 }
 
-.login-area .login-inner .lss-btn button:hover {
+.login-area .login-inner .btn-ls button:hover {
   background: #ffffff;
   color: #2B75BB;
 }

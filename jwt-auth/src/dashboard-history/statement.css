@@ -1,0 +1,32 @@
+/* .playerDataTable {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+} */
+
+.tableData {
+  margin: 32px auto 0;
+  border: 2px solid #2B75BB;
+  border-collapse: collapse;
+}
+
+.tableData th {
+  border: 2px solid #2B75BB;
+  padding: 15px;
+}
+
+.tableData td {
+  border: 2px solid #2B75BB;
+  padding: 8px 15px;
+}
+
+.tableData tr.red {
+  background-color: #f60000d6;
+}
+
+.tableData tr.green {
+  background-color: #167301c2;
+}

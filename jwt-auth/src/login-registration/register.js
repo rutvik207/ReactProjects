@@ -39,7 +39,13 @@ const Register = () => {
       console.log("jsjshshshshshshshshsh");
       return;
     }
-    const inputData = { enteredName, enteredAccountNumber, enteredaAdharNumber, enteredPanNumber, enteredBalance };
+    const inputData = {
+      enteredName,
+      enteredAccountNumber,
+      enteredaAdharNumber,
+      enteredPanNumber,
+      enteredBalance,
+    };
     fetchLogin(inputData);
   };
 
@@ -51,8 +57,8 @@ const Register = () => {
         account_number: inputData.enteredAccountNumber,
         aadhar_number: inputData.enteredaAdharNumber,
         pan_number: inputData.enteredPanNumber,
-        balance: inputData.enteredBalance,
-        start_balance: inputData.enteredBalance,
+        balance: +inputData.enteredBalance,
+        start_balance: +inputData.enteredBalance,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -66,6 +72,7 @@ const Register = () => {
       });
       return;
     }
+    navigate("/home");
   };
 
   const isFormValid = (
@@ -155,7 +162,7 @@ const Register = () => {
               <input type="number" placeholder="Balance" ref={balance} />
               <p className="errorField">{errorMsg.balanceErrorMsg}</p>
 
-              <div className="lss-btn">
+              <div className="btn-ls">
                 <button type="submit" className="btn" onClick={onSubmit}>
                   Submit
                 </button>
