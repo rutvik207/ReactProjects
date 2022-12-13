@@ -20,13 +20,15 @@ const userSlice = createSlice({
       const user = current(aState.user);
       const loggedUser = current(aState.loggedUserDetails);
       // let balance = loggedUser.balance + aUserBalance.payload;
-      const updatedLoggedUser = { ...loggedUser, balance: aUserBalance.payload };
+      const updatedLoggedUser = {
+        ...loggedUser,
+        balance: aUserBalance.payload,
+      };
       // console.log(balance);
       aState.loggedUserDetails = updatedLoggedUser;
       const upDatedUser = user.map((aUser) =>
-      
         aUser.id === loggedUser.id
-          ? { ...aUser, balance: aUserBalance.payload}
+          ? { ...aUser, balance: aUserBalance.payload }
           : aUser
       );
       aState.user = upDatedUser;

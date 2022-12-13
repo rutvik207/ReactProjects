@@ -36,12 +36,12 @@ const LoginForm = () => {
           ? aUser
           : setErrorMsg({ loginErrorMsg: "details invalid!" })
       );
-    if(!selectedUser){
+    if (!selectedUser) {
       return;
     }
     dispatch(userActions.storeLoggedUser(selectedUser));
-    dispatch(authActions.isLogin(true))
-    navigate("/dashBoard")
+    dispatch(authActions.isLogin(true));
+    navigate("/dashBoard");
   };
 
   const isFormValid = (aEnteredEmail, aEnteredPassword) => {

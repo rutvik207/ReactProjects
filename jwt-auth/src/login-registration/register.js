@@ -1,9 +1,12 @@
 import React, { useRef, useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const user = useSelector((aState) => aState.user.user);
   const navigate = useNavigate();
   const [errorMsg, setErrorMsg] = useState({
+    userExistErrorMsg: "",
     detailFetchErrorMsg: "",
     nameErrorMsg: "",
     accountNumberErrorMsg: "",
@@ -11,7 +14,6 @@ const Register = () => {
     panNumberErrorMsg: "",
     balanceErrorMsg: "",
   });
-
   const name = useRef();
   const accountNumber = useRef();
   const aadharNumber = useRef();
@@ -37,6 +39,13 @@ const Register = () => {
     ) {
       return;
     }
+    const existUser = user.find(
+      (aUser) => aUser.aadhar_number === enteredAdharNumber
+    );
+    if(existUser) {
+      setErrorMsg({ userExistErrorMsg: "UserAccountExist" });
+      return;
+    }
     const inputData = {
       enteredName,
       enteredAccountNumber,
@@ -44,6 +53,7 @@ const Register = () => {
       enteredPanNumber,
       enteredBalance,
     };
+
     fetchLogin(inputData);
   };
 
@@ -137,6 +147,7 @@ const Register = () => {
           <div className="login-area">
             <div className="login-heading">
               <h1>Create Account</h1>
+              <p className="errorField">{errorMsg.userExistErrorMsg}</p>
             </div>
             <div className="login-inner">
               <input type="text" placeholder="Name" ref={name} />

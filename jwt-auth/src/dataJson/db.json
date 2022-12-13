@@ -10,22 +10,87 @@
       "id": 127
     },
     {
-      "name": "rutvik",
-      "account_number": "23232323",
-      "aadhar_number": "23232323",
-      "pan_number": "23232323",
-      "balance": 49000,
-      "start_balance": 50000,
+      "name": "hfbusg",
+      "account_number": "12345678",
+      "aadhar_number": "1234567800",
+      "pan_number": "rutvik124",
+      "balance": 552018.52,
+      "start_balance": 8000,
       "id": 128
+    },
+    {
+      "name": "jhewygwyegfyu",
+      "account_number": "3427384673264",
+      "aadhar_number": "123456780012",
+      "pan_number": "jdbgsjgbuergeh",
+      "balance": 10020,
+      "start_balance": 10020,
+      "id": 129
     }
   ],
   "history": [
     {
       "userId": 128,
-      "date": "12/12/2022",
+      "date": "13/12/2022",
+      "type": "withdraw",
+      "amount": 7999,
+      "id": 1
+    },
+    {
+      "userId": 128,
+      "date": "13/12/2022",
+      "type": "deposit",
+      "amount": 12000,
+      "id": 2
+    },
+    {
+      "userId": 128,
+      "date": "13/12/2022",
+      "type": "deposit",
+      "amount": 12000,
+      "id": 3
+    },
+    {
+      "userId": 128,
+      "date": "13/12/2022",
+      "type": "neft",
+      "amount": 10000,
+      "id": 4
+    },
+    {
+      "userId": 128,
+      "date": "13/12/2022",
+      "type": "deposit",
+      "amount": 1200,
+      "id": 5
+    },
+    {
+      "userId": 128,
+      "date": "13/12/2022",
+      "type": "deposit",
+      "amount": 1000,
+      "id": 6
+    },
+    {
+      "userId": 128,
+      "date": "13/12/2022",
+      "type": "withdraw",
+      "amount": 12000,
+      "id": 7
+    },
+    {
+      "userId": 128,
+      "date": "13/12/2022",
       "type": "withdraw",
       "amount": 1000,
-      "id": 1
+      "id": 8
+    },
+    {
+      "userId": 128,
+      "date": "13/12/2022",
+      "type": "deposit",
+      "amount": 554848,
+      "id": 9
     }
   ]
 }

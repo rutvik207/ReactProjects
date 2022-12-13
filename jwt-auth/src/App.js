@@ -12,30 +12,27 @@ import Statement from "./dashboard-history/statement";
 function App() {
   const isLogin = useSelector((aState) => aState.login.isLogin);
   const navigate = useNavigate();
-  useEffect(()=>{
-    if(!isLogin){
-      navigate("/home")
+  useEffect(() => {
+    if (!isLogin) {
+      navigate("/home");
     }
-  },[])
+  }, []);
   return (
     <>
-      <div className="rutvik123">
-        {isLogin && (
-          <div>
-            <Navbar />
-          </div>
-        )}
+      {isLogin && (
         <div>
-          <Routes>
-            <Route path="/" element={<Navigate to="/home" />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/login" element={<LoginForm />} />
-            <Route path="/user/register" element={<Register />} />
-            <Route path="/dashBoard" element={<DashBoard />} />
-            <Route path="/statement" element={<Statement />} />
-
-          </Routes>
+          <Navbar />
         </div>
+      )}
+      <div>
+        <Routes>
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/user/register" element={<Register />} />
+          <Route path="/dashBoard" element={<DashBoard />} />
+          <Route path="/statement" element={<Statement />} />
+        </Routes>
       </div>
     </>
   );

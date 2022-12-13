@@ -1,59 +1,61 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import "./home.css"
+import "./home.css";
 import { userActions } from "./store/userStore";
 import { statementAction } from "../dashboard-history/store/statementStore";
-const Home =() =>{
+const Home = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [fetchErrorMsg, setFetchErrorMsg] = useState();
+  useEffect(() => {
+    fetchUser();
+    fetchStatement();
+  }, []);
 
-const navigate = useNavigate();
-const dispatch = useDispatch();
-const [fetchErrorMsg, setFetchErrorMsg] = useState()
-useEffect(() => {
-  fetchUser();
-  fetchStatement();
-}, []);
+  const fetchUser = async () => {
+    const responseOfApi = await fetch("http://localhost:3000/users");
+    const responseOfData = await responseOfApi.json();
+    if (!responseOfApi.ok) {
+      setFetchErrorMsg(responseOfData.error.message);
+      return;
+    }
+    console.log("responseOfData===================>", responseOfData);
+    dispatch(userActions.storeUsers(responseOfData));
+  };
 
-const fetchUser = async () => {
-  const responseOfApi = await fetch("http://localhost:3000/users");
-  const responseOfData = await responseOfApi.json();
-  if (!responseOfApi.ok) {
-    setFetchErrorMsg(
-   responseOfData.error.message,
-    );
-    return;
-  }
-  console.log("responseOfData===================>", responseOfData);
-  dispatch(userActions.storeUsers(responseOfData));
-};
+  const fetchStatement = async () => {
+    const responseOfApi = await fetch("http://localhost:3000/history");
+    const responseOfData = await responseOfApi.json();
+    if (!responseOfApi.ok) {
+      setFetchErrorMsg(responseOfData.error.message);
+      return;
+    }
+    console.log("responseOfData===================>", responseOfData);
+    dispatch(statementAction.storeStatement(responseOfData));
+  };
 
-const fetchStatement =async()=>{
-const responseOfApi = await fetch("http://localhost:3000/history");
-const responseOfData = await responseOfApi.json();
-if (!responseOfApi.ok) {
-  setFetchErrorMsg(
-    responseOfData.error.message,
-     );
-  return;
-}
-console.log("responseOfData===================>", responseOfData);
-dispatch(statementAction.storeStatement(responseOfData));
+  const redirectToLogin = () => {
+    navigate("/login");
+  };
 
-}
-
- const redirectToLogin =() =>{
-  navigate("/login");
- }
-
- const redirectToRegistration =() =>{
-  navigate("/user/register");
- } 
-  return(
+  const redirectToRegistration = () => {
+    navigate("/user/register");
+  };
+  return (
     <div className="root">
-    {fetchErrorMsg && <div className="error-Blog"><p>{fetchErrorMsg}</p></div>}
-    <button className="loginHome1" onClick={redirectToLogin}>Login</button>
-    <button className="loginHome2" onClick={redirectToRegistration}>Register</button>
+      {fetchErrorMsg && (
+        <div className="error-Blog">
+          <p>{fetchErrorMsg}</p>
+        </div>
+      )}
+      <button className="loginHome1" onClick={redirectToLogin}>
+        Login
+      </button>
+      <button className="loginHome2" onClick={redirectToRegistration}>
+        Register
+      </button>
     </div>
-  )
-}
+  );
+};
 export default Home;

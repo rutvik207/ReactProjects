@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import TransationForm from "../shred/model";
+import TransactionForm from "../shred/model";
 import "./dashBoard.css";
 import { userActions } from "../home/store/userStore";
 import { statementAction } from "./store/statementStore";
@@ -11,11 +11,8 @@ const DashBoard = () => {
   const [showModel, setShowModel] = useState(false);
   const [error, setError] = useState();
   const dispatch = useDispatch();
-  const[message,setMessage]=useState();
 
   const setUserActionType = (e) => {
-    setMessage("");
-    setError("");
     e.preventDefault();
     const takeType = e.target.value;
     console.log(takeType);
@@ -24,23 +21,30 @@ const DashBoard = () => {
   };
 
   const hideModel = () => {
-    console.log("rutvik")
+    console.log("rutvik");
     setShowModel(!showModel);
   };
 
   const checkType = (aAmount) => {
     if (actionType === "withdraw") {
       console.log(aAmount);
-      withdraw(aAmount);
+      const isValidMsg= withdraw(aAmount);
+      console.log(isValidMsg);
+      return isValidMsg;
     }
     if (actionType === "deposit") {
       deposit(aAmount);
+      return;
     }
     if (actionType === "neft") {
-      neft(aAmount);
+      const isValidMsg= neft(aAmount);
+      console.log(isValidMsg);
+      return isValidMsg;
     }
     if (actionType === "saving") {
-      saving(aAmount);
+      const isValidMsg= saving(aAmount);
+      console.log(isValidMsg);
+      return isValidMsg;
     }
   };
 
@@ -69,29 +73,32 @@ const DashBoard = () => {
     dispatch(userActions.upDateBalance(aAddBalance));
   };
 
-  const editUserAccount = async(aBalance)=>{
-    const responseOfApi = await fetch(`http://localhost:3000/users/${loggedUser.id}`, {
-      method: "PUT",
-      body: JSON.stringify({
-        name: loggedUser.name,
-        account_number: loggedUser.account_number,
-        aadhar_number: loggedUser.aadhar_number,
-        pan_number: loggedUser.pan_number,
-        balance: aBalance,
-        start_balance: loggedUser.start_balance,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+  const editUserAccount = async (aBalance) => {
+    const responseOfApi = await fetch(
+      `http://localhost:3000/users/${loggedUser.id}`,
+      {
+        method: "PUT",
+        body: JSON.stringify({
+          name: loggedUser.name,
+          account_number: loggedUser.account_number,
+          aadhar_number: loggedUser.aadhar_number,
+          pan_number: loggedUser.pan_number,
+          balance: aBalance,
+          start_balance: loggedUser.start_balance,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const responseOfData = await responseOfApi.json();
     console.log(responseOfData);
     if (!responseOfApi.ok) {
       setError(responseOfData.error.message);
       return;
     }
-  }
-  
+  };
+
   const getStatement = (aAmount) => {
     const date = new Date().toLocaleDateString();
     const statement = {
@@ -115,36 +122,36 @@ const DashBoard = () => {
     let statement, balance;
     switch (true) {
       case loggedUser.balance <= aAmount:
-      console.log("ghuysoke nay");
-        setError("sorry sir you dont have a enough balance");
-        break;
+        console.log("ghuysoke nay");
+        const errorMsg="sorry sir you dont have a enough balance";
+        return errorMsg;
       case aAmount >= 10000 && aAmount <= 19999:
         statement = getStatement(aAmount);
         balance = getBalance(aAmount, 1);
         addStatement(statement, balance);
-        editUserAccount(balance);        
+        editUserAccount(balance);
         break;
       case aAmount >= 20000 && aAmount <= 39999:
         statement = getStatement(aAmount);
         balance = getBalance(aAmount, 2);
         addStatement(statement, balance);
-        editUserAccount(balance);        
+        editUserAccount(balance);
         break;
       case aAmount >= 40000:
         statement = getStatement(aAmount);
         balance = getBalance(aAmount, 5);
         addStatement(statement, balance);
-        editUserAccount(balance);        
+        editUserAccount(balance);
         break;
 
       default:
         statement = getStatement(aAmount);
         balance = getBalance(aAmount, 0);
         addStatement(statement, balance);
-        editUserAccount(balance);        
+        editUserAccount(balance);
         break;
     }
-     // if(loggedUser.balance <= amount){
+    // if(loggedUser.balance <= amount){
     //   setError("sorry sir you dont have a enough balance");
     //   return;
     // }
@@ -173,35 +180,36 @@ const DashBoard = () => {
   const deposit = (aAmount) => {
     const charge = (1 / 100) * aAmount;
     const addBalance = loggedUser.balance + aAmount - charge;
-   const statement = getStatement(aAmount);
+    const statement = getStatement(aAmount);
     addStatement(statement, addBalance);
-    editUserAccount(addBalance);       
+    editUserAccount(addBalance);
   };
   const neft = (aAmount) => {
     let statement, balance;
     switch (true) {
       case loggedUser.balance <= aAmount:
-        setError("sorry sir you dont have a enough balance");
-        break;
+        const errorMsg="sorry sir you dont have a enough balance";
+        return errorMsg;
       case aAmount <= 50000:
         statement = getStatement(aAmount);
         balance = getBalance(aAmount, 1);
         addStatement(statement, balance);
-        editUserAccount(balance);        
+        editUserAccount(balance);
         break;
       case aAmount > 50000:
         statement = getStatement(aAmount);
         balance = getBalance(aAmount, 3);
         addStatement(statement, balance);
-        editUserAccount(balance);        
+        editUserAccount(balance);
         break;
     }
   };
   const saving = (aYear) => {
-    const accruedInterest = (loggedUser.balance * 0.05)* aYear;
+    const accruedInterest = loggedUser.balance * 0.05 * aYear;
     const savingBalance = loggedUser.balance + accruedInterest;
     console.log(savingBalance);
-    setMessage(`your future balance is ${savingBalance}`);
+   const balance = `your future balance is ${savingBalance}`;
+   return balance;
   };
   return (
     <>
@@ -241,7 +249,7 @@ const DashBoard = () => {
                 SAVING INTEREST
               </button>
             </div>
-            {/* <p>{error}</p> */}
+            <p>{error}</p>
           </div>
           <div className="dashboard-img">
             <img src="image/5755627.png" />
@@ -249,7 +257,16 @@ const DashBoard = () => {
         </div>
       </div>
 
-      {showModel && <TransationForm message={message} errorMsg={error} actionType={actionType} checkType={checkType} hideModel={hideModel} />}
+      {showModel && (
+        <TransactionForm
+        // rutvik={rutvik}
+          // message={message}
+          // errorMsg={error}
+          actionType={actionType}
+          checkType={checkType}
+          hideModel={hideModel}
+        />
+      )}
     </>
   );
 };

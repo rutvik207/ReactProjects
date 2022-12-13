@@ -21,13 +21,15 @@
   padding: 0 1rem;
 
 }
-.error-Blog{
+
+.error-Blog {
   position: absolute;
   top: 75%;
-left: 50%;
-background-color: white;
+  left: 50%;
+  background-color: white;
 }
-.error-Blog p{
+
+.error-Blog p {
   color: red;
 }
 
@@ -46,8 +48,9 @@ background-color: white;
 }
 
 .loginHome1:not([disabled]):hover {
-  box-shadow:  -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+  box-shadow: -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
 }
+
 .loginHome2:not([disabled]):hover {
-  box-shadow:  -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+  box-shadow: -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
 }
