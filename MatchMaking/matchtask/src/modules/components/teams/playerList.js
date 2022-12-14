@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import Dialog from "../../../shred/ui/dialog";
-import { matchActions } from "../matches/store/matchsStore";
+import { matchActions } from "../matches/store/matchesStore";
 import PlayerForm from "./playerForm";
 import "./playerList_form.css";
 import { teamActions } from "./store/teamStore";
@@ -11,7 +11,7 @@ const PlayerList = () => {
   const api = "https://matchtask-333a4-default-rtdb.firebaseio.com";
   const id = useParams();
   const dispatch = useDispatch();
-  const navigate =useNavigate();
+  const navigate = useNavigate();
   const selectedTeam = useSelector((aState) => aState.team.selectedTeam);
   const selectedMatches = useSelector((aState) => aState.matches.matches);
   const allTeam = useSelector((aState) => aState.team.teams);
@@ -21,7 +21,7 @@ const PlayerList = () => {
   const [errorMsg, setErrorMsg] = useState();
   const [editedPlayer, setEditedPlayer] = useState("");
   useEffect(() => {
-    if(selectedMatches.length === 0){
+    if (selectedMatches.length === 0) {
       fetchMatches();
     }
     if (allTeam.length === 0) {
@@ -47,7 +47,6 @@ const PlayerList = () => {
     if (!responseOfMatches.ok) {
       setErrorMsg(fetchMatches.error.message);
       return;
-
     }
     const matches = [];
     for (const key in fetchMatches) {
@@ -59,10 +58,12 @@ const PlayerList = () => {
       });
     }
     dispatch(matchActions.storeTeams(matches));
-    let playedTeams =[];
-    matches.forEach((aItem) => aItem.teamId.forEach((item)=>playedTeams.push(item)));
-    if(playedTeams.includes(id.teamid)){
-      navigate('/teams')
+    let playedTeams = [];
+    matches.forEach((aItem) =>
+      aItem.teamId.forEach((item) => playedTeams.push(item))
+    );
+    if (playedTeams.includes(id.teamId)) {
+      navigate("/teams");
       return;
     }
   };
@@ -73,7 +74,6 @@ const PlayerList = () => {
     if (!responseOfTeams.ok) {
       setErrorMsg(fetchTeams.error.message);
       return;
-
     }
     const teams = [];
     let playerDetails = [];
@@ -92,12 +92,11 @@ const PlayerList = () => {
       playerDetails = [];
     }
     const selectedTeam = teams.find(
-      (selectedTeam) => selectedTeam.id === id.teamid
+      (selectedTeam) => selectedTeam.id === id.teamId
     );
-    if(!selectedTeam){
-      navigate("/teams")
+    if (!selectedTeam) {
+      navigate("/teams");
       return;
-
     }
     dispatch(teamActions.setTeamData(teams));
     dispatch(teamActions.selectedTeam(selectedTeam));
@@ -129,7 +128,6 @@ const PlayerList = () => {
     if (!responseOfApi.ok) {
       setErrorMsg(responseOfData.error.message);
       return;
-
     }
     dispatch(
       teamActions.addPlayer({
@@ -155,7 +153,6 @@ const PlayerList = () => {
     if (!responseOfApi.ok) {
       setErrorMsg(responseOfData.error.message);
       return;
-
     }
 
     dispatch(teamActions.editPlayer(aPlayerDetails));
@@ -225,7 +222,7 @@ const PlayerList = () => {
         </div>
       )}
       {hidePlayerForm && (
-        <div className="inputfields">
+        <div className="inputFields">
           <PlayerForm
             addPlayer={addPlayer}
             editPlayerDetails={editPlayerDetails}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { matchActions } from "./store/matchsStore";
+import { matchActions } from "./store/matchesStore";
 import "./teamSelection.css";
 import { teamActions } from "../teams/store/teamStore";
 
@@ -15,10 +15,10 @@ const TeamSelection = () => {
   const [selectedTeamIdsForPlay, setSelectedTeamIdForPlay] = useState([]);
 
   useEffect(() => {
-    if(matches.length === 0){
+    if (matches.length === 0) {
       fetchMatches();
     }
-    if(teamList.length === 0){
+    if (teamList.length === 0) {
       fetchTeams();
     }
   }, []);
@@ -79,7 +79,6 @@ const TeamSelection = () => {
     navigate(`/matches/${aPlayedTeamsId}`);
   };
 
- 
   const fetchTeams = async () => {
     const responseOfTeams = await fetch(`${api}/teams.json`);
     const fetchTeams = await responseOfTeams.json();

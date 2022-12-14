@@ -20,13 +20,12 @@ const LoginForm = () => {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
-useEffect(()=>{
-  const tocken = localStorage.getItem('token')
-  if(tocken){
-    navigate("/teams");
-  }
-})
-
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/teams");
+    }
+  });
 
   const onLogin = (aEvent) => {
     aEvent.preventDefault();
@@ -65,10 +64,7 @@ useEffect(()=>{
 
   const isFormValid = (aEnteredEmail, aEnteredPassword) => {
     const emailErrorMsg = validateField(aEnteredEmail, "email");
-    const passwordErrorMsg = validateField(
-      aEnteredPassword,
-      "password"
-    );
+    const passwordErrorMsg = validateField(aEnteredPassword, "password");
 
     setErrorMsg({
       emailErrorMsg: emailErrorMsg,
@@ -81,7 +77,7 @@ useEffect(()=>{
   };
 
   const validateField = (aUserInput, aInputField) => {
-    return !aUserInput  ? `${aInputField} is blank` : "";
+    return !aUserInput ? `${aInputField} is blank` : "";
   };
 
   return (

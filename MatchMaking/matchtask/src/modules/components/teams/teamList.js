@@ -3,14 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { teamActions } from "../teams/store/teamStore";
 import "./teamList.css";
 import { useNavigate } from "react-router-dom";
-import { matchActions } from "../matches/store/matchsStore";
+import { matchActions } from "../matches/store/matchesStore";
 
 const TeamList = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   let teamList = useSelector((aState) => aState.team.teams);
   let selectedMatches = useSelector((aState) => aState.matches.matches);
-  const[playedTeams,setPlayedTeams]=useState([]);
+  const [playedTeams, setPlayedTeams] = useState([]);
   const [errorMsg, setErrorMsg] = useState();
   const api = "https://matchtask-333a4-default-rtdb.firebaseio.com";
   useEffect(() => {
@@ -23,13 +23,14 @@ const TeamList = () => {
       fetchDetails();
       return;
     }
-      isTeamValidForEdit();
-
+    isTeamValidForEdit();
   }, []);
 
   const isTeamValidForEdit = () => {
-    let playedTeams =[];
-   selectedMatches.forEach((aItem) => aItem.teamId.forEach((item)=>playedTeams.push(item)));
+    let playedTeams = [];
+    selectedMatches.forEach((aItem) =>
+      aItem.teamId.forEach((item) => playedTeams.push(item))
+    );
     setPlayedTeams(playedTeams);
   };
 
@@ -59,7 +60,6 @@ const TeamList = () => {
     if (!responseOfTeams.ok) {
       setErrorMsg("no Team Found");
       return;
-
     }
     const teams = [];
     let playerDetails = [];
@@ -86,8 +86,10 @@ const TeamList = () => {
       return (
         <div className="team-list" key={index}>
           <li>{aTeamDetails.teamName}</li>
-          <button onClick={() => editTeams(aTeamDetails)}
-          disabled={playedTeams.includes(aTeamDetails.id)}>
+          <button
+            onClick={() => editTeams(aTeamDetails)}
+            disabled={playedTeams.includes(aTeamDetails.id)}
+          >
             Edit Team
           </button>
         </div>
@@ -102,7 +104,7 @@ const TeamList = () => {
     <div>
       <p>{errorMsg}</p>
       <div className="playerListBox">
-        <ul>{playedTeams.length !==0 && renderTeamList()}</ul>
+        <ul>{playedTeams.length !== 0 && renderTeamList()}</ul>
       </div>
     </div>
   );

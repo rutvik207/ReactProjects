@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { matchActions } from "./store/matchsStore";
+import { matchActions } from "./store/matchesStore";
 import { teamActions } from "../teams/store/teamStore";
 import "./playerSelection.css";
 
@@ -96,10 +96,10 @@ const PlayerSelection = () => {
         teams: fetchMatches[key],
       });
     }
-    let playedTeams =[];
-    matches.forEach((aItem) =>playedTeams.push(aItem.id));
-    if(!playedTeams.includes(id.matchTeamId)){
-      navigate('/matches')
+    let playedTeams = [];
+    matches.forEach((aItem) => playedTeams.push(aItem.id));
+    if (!playedTeams.includes(id.matchTeamId)) {
+      navigate("/matches");
       return;
     }
 
@@ -273,19 +273,21 @@ const PlayerSelection = () => {
   };
 
   const addSelectedTeams = async (teams) => {
-      const responseOfData = await fetch(`${api}/matches.json`, {
-        method: "POST",
-        body: JSON.stringify(teams),
-      });
-      const fetchTeams = await responseOfData.json();
-      if (!responseOfData.ok) {
-        setErrorMsg(fetchTeams.error.message);
-      }
-  dispatch(matchActions.addSelectedMatchesTeam({
-    id:fetchTeams.name,
-    teamId:[teams[0].id,teams[1].id],
-    teams:teams
-  }));
+    const responseOfData = await fetch(`${api}/matches.json`, {
+      method: "POST",
+      body: JSON.stringify(teams),
+    });
+    const fetchTeams = await responseOfData.json();
+    if (!responseOfData.ok) {
+      setErrorMsg(fetchTeams.error.message);
+    }
+    dispatch(
+      matchActions.addSelectedMatchesTeam({
+        id: fetchTeams.name,
+        teamId: [teams[0].id, teams[1].id],
+        teams: teams,
+      })
+    );
   };
   return (
     <div>

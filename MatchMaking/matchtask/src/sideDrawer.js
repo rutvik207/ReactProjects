@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./sideDrower.css";
+import "./sideDrawer.css";
 
-const SideDrower = () => {
+const SideDrawer = () => {
   const navigate = useNavigate();
   const redirectToMatches = () => {
     navigate(`/matches`);
@@ -17,4 +17,4 @@ const SideDrower = () => {
     </nav>
   );
 };
-export default SideDrower;
+export default SideDrawer;

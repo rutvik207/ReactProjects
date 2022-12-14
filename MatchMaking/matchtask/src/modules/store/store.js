@@ -1,7 +1,7 @@
-import { configureStore } from '@reduxjs/toolkit';
-import teamReducer from '../components/teams/store/teamStore';
-import loginReducer from '../components/login/loginStore/loginStore';
-import matchReducer from '../components/matches/store/matchsStore';
+import { configureStore } from "@reduxjs/toolkit";
+import teamReducer from "../components/teams/store/teamStore";
+import loginReducer from "../components/login/loginStore/loginStore";
+import matchReducer from "../components/matches/store/matchesStore";
 
 const store = configureStore({
   reducer: {
