@@ -44,9 +44,9 @@ const LoginForm = () => {
     navigate("/dashBoard");
   };
 
-  const isFormValid = (aEnteredEmail, aEnteredPassword) => {
-    const accountNumberErrorMsg = validateField(aEnteredEmail);
-    const aadharNumberErrorMsg = validateField(aEnteredPassword);
+  const isFormValid = (aEnteredAccountNumber, aEnteredAadharNumber) => {
+    const accountNumberErrorMsg = validateField(aEnteredAccountNumber);
+    const aadharNumberErrorMsg = validateField(aEnteredAadharNumber);
 
     setErrorMsg({
       accountNumberErrorMsg: accountNumberErrorMsg,
