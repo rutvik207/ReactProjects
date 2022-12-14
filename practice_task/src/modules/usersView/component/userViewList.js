@@ -27,7 +27,7 @@ class UsersViewList extends Component {
         </div>
         <div>
           <button
-            disabled={this.props.userIndex === (this.props.userArrayLength-1)}
+            disabled={this.props.userIndex === this.props.userArrayLength - 1}
             onClick={this.props.onNextUser}
           >
             next

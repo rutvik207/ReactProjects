@@ -1,6 +1,6 @@
 import { Component } from "react";
-import Userform from "../components/userForm";
-import Userlist from "../components/userList";
+import UserForm from "../components/userForm";
+import UserList from "../components/userList";
 import "../CSS/users.css";
 import DeleteConfirmation from "../UI/deleteModel";
 
@@ -26,10 +26,10 @@ class Users extends Component {
     return (
       <div className="root">
         <section>{this.shoeUserListComponent()}</section>
-        <div className="wrappercomponent">
+        <div className="wrapper">
           {this.state.showUserFormComponent && (
             <section>
-              <Userform
+              <UserForm
                 getUserForValidation={this.checkUserValidation}
                 onAddUser={this.addUserHandler}
                 hideFormModel={this.ShowOrHideUserFormComponent}
@@ -41,7 +41,7 @@ class Users extends Component {
 
           {this.state.showDeleteBoxModel && (
             <DeleteConfirmation
-              varificationForDeleteUser={this.deleteUserHandler}
+              verificationForDeleteUser={this.deleteUserHandler}
               title={"User"}
               hideDeleteBoxModel={this.hideShowDeleteModel}
             />
@@ -86,7 +86,6 @@ class Users extends Component {
         throw new Error("Something went wrong!!!!!!");
       }
       const data = await response.json();
-      console.log("data", data);
       this.setState({ Users: [...this.state.Users, aUser] });
       this.ShowOrHideUserFormComponent();
     } catch (aError) {
@@ -106,8 +105,6 @@ class Users extends Component {
       }
 
       const data = await response.json();
-      console.log("data", data);
-
       const loadedUsers = [];
 
       for (const key in data) {
@@ -129,7 +126,7 @@ class Users extends Component {
   };
   shoeUserListComponent = () => {
     return (
-      <Userlist
+      <UserList
         setShowOrHideUserFormComponent={this.ShowOrHideUserFormComponent}
         userForDelete={this.userForDelete}
         users={this.state.Users}
@@ -171,7 +168,6 @@ class Users extends Component {
         throw new Error("Something went wrong!");
       }
       const data = await response.json();
-      console.log(data);
       const tableData = this.state.Users.filter(
         (i) => i.id !== this.userIdForDelete
       );
@@ -195,8 +191,6 @@ class Users extends Component {
         throw new Error("Something went wrong!");
       }
       const data = await response.json();
-      console.log("data", data);
-
       const userDetails = [...this.state.Users];
 
       const indexOfEditedUser = userDetails.findIndex(

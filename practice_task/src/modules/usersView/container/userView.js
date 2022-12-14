@@ -1,12 +1,12 @@
 import { Component } from "react";
-import UsersViewList from "../component/userView";
+import UsersViewList from "../component/userViewList";
 import "../CSS/userView.css";
-class Userview extends Component {
+class UserView extends Component {
   constructor() {
     super();
     this.state = {
       users: [],
-      currentUserDetails :"",
+      currentUserDetails: "",
     };
     this.userIndex = 0;
     this.api = "https://user-profile-fd358-default-rtdb.firebaseio.com/Users";
@@ -19,30 +19,28 @@ class Userview extends Component {
   render() {
     return (
       <section>
-      <UsersViewList
-       onNextUser={this.setNextUserTodisplay}
-       onPreviousUser={this.setPreviousUserTodisplay}
-       currentUser={this.state.currentUserDetails}
-       userIndex={this.userIndex}
-       userArrayLength={this.state.users.length}
-      />
+        <UsersViewList
+          onNextUser={this.setNextUserToDisplay}
+          onPreviousUser={this.setPreviousUserToDisplay}
+          currentUser={this.state.currentUserDetails}
+          userIndex={this.userIndex}
+          userArrayLength={this.state.users.length}
+        />
       </section>
     );
   }
 
-
-  setNextUserTodisplay = () => {
-    if(this.userIndex !== this.state.users.length-1){
+  setNextUserToDisplay = () => {
+    if (this.userIndex !== this.state.users.length - 1) {
       this.userIndex += 1;
-      this.setState({currentUserDetails:this.state.users[this.userIndex]});
-}
-
+      this.setState({ currentUserDetails: this.state.users[this.userIndex] });
+    }
   };
-  setPreviousUserTodisplay = () => {
-    if(this.userIndex!== 0){
+  setPreviousUserToDisplay = () => {
+    if (this.userIndex !== 0) {
       this.userIndex -= 1;
-      this.setState({currentUserDetails:this.state.users[this.userIndex]});
-}
+      this.setState({ currentUserDetails: this.state.users[this.userIndex] });
+    }
   };
 
   fetchUsers = async () => {
@@ -65,12 +63,8 @@ class Userview extends Component {
           Website: userData[key].Website,
         });
       }
-      this.setState({ users: loadedUsers , currentUserDetails : loadedUsers[0]});
-
-    } catch (aError) {
-      console.log(aError);
-    }
-    
+      this.setState({ users: loadedUsers, currentUserDetails: loadedUsers[0] });
+    } catch (aError) {}
   };
 }
-export default Userview;
+export default UserView;

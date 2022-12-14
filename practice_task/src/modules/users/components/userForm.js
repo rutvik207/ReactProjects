@@ -1,6 +1,6 @@
 import { Component } from "react";
 import classes from "../CSS/userForm.module.css";
-class Userform extends Component {
+class UserForm extends Component {
   constructor() {
     super();
     this.state = {
@@ -99,16 +99,17 @@ class Userform extends Component {
               id={aItem.id}
               onChange={this.onChange}
             />
-            {this.state.onSubmitErrorMsgs && (aItem.error || aItem.errorMsg) && (
-              <>
-                {!aItem.errorMsg && (
-                  <p
-                    style={{ color: "red" }}
-                  >{`please enter valid${aItem.name}`}</p>
-                )}
-                <p style={{ color: "red" }}>{aItem.errorMsg}</p>
-              </>
-            )}
+            {this.state.onSubmitErrorMsgs &&
+              (aItem.error || aItem.errorMsg) && (
+                <>
+                  {!aItem.errorMsg && (
+                    <p
+                      style={{ color: "red" }}
+                    >{`please enter valid${aItem.name}`}</p>
+                  )}
+                  <p style={{ color: "red" }}>{aItem.errorMsg}</p>
+                </>
+              )}
           </div>
         ))}
         <button type="submit">
@@ -123,7 +124,6 @@ class Userform extends Component {
   }
 
   submitHandler = (aEvent) => {
-    console.log("rutvik");
     aEvent.preventDefault();
     const formErrorField = this.props.getUserForValidation(this.state.user);
     const entries = Object.entries(formErrorField);
@@ -133,7 +133,7 @@ class Userform extends Component {
     }));
     let updatedFields1 = updatedFields.map((aItem, idx) =>
       aItem.name === "Phone" && this.state.user.Phone.length > 10
-        ? { ...aItem, errorMsg: "please enter a valide phone number" }
+        ? { ...aItem, errorMsg: "please enter a valid phone number" }
         : aItem
     );
 
@@ -141,7 +141,6 @@ class Userform extends Component {
     let validationState = this.state.userDetailFields.filter(
       (aItem) => aItem.error === true
     );
-    console.log(validationState.length);
     let validationState2 = updatedFields1.filter(
       (aItem) => aItem.errorMsg !== ""
     );
@@ -157,7 +156,6 @@ class Userform extends Component {
       this.setState({ onSubmitErrorMsgs: true });
     }
     this.setState({ onSubmitErrorMsgs: true });
-
   };
 
   onChange = (e) => {
@@ -176,4 +174,4 @@ class Userform extends Component {
   };
 }
 
-export default Userform;
+export default UserForm;

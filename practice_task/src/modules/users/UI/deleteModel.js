@@ -8,7 +8,7 @@ export default class DeleteConfirmation extends Component {
         <h3>{`Are you sure want to delete ${this.props.title}`}</h3>
         <div className="button-form">
           <button onClick={this.props.hideDeleteBoxModel}>Cancel</button>
-          <button onClick={this.props.varificationForDeleteUser}>okay</button>
+          <button onClick={this.props.verificationForDeleteUser}>okay</button>
         </div>
       </div>
     );

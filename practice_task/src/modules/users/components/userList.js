@@ -1,27 +1,17 @@
 import { Component } from "react";
 import classes from "../CSS/userList.module.css";
 
-class Userlist extends Component {
-  // constructor(){
-  //   super();
-  //   this.state = {
-  //     showUsers: true,
-  //     more: 'Test',
-  //   };
-  // }
-
+class UserList extends Component {
   render() {
     return (
       <>
-      <button onClick={this.props.setShowOrHideUserFormComponent}>AddUser</button>
-      <ul className={"users-list"}>
-        
-        {this.renderUserHeader()}
-        {this.props.users.length && this.renderUserList()}
-        
-        
-      </ul>
-  
+        <button onClick={this.props.setShowOrHideUserFormComponent}>
+          AddUser
+        </button>
+        <ul className={"users-list"}>
+          {this.renderUserHeader()}
+          {this.props.users.length && this.renderUserList()}
+        </ul>
       </>
     );
   }
@@ -47,13 +37,21 @@ class Userlist extends Component {
         <p>{aUser.Email}</p>
         <p>{aUser.Phone}</p>
         <p>{aUser.Website}</p>
-        <p className={classes.actions} onClick={() => this.props.userForDelete(aUser.id)}>
+        <p
+          className={classes.actions}
+          onClick={() => this.props.userForDelete(aUser.id)}
+        >
           delete
         </p>
-        <p className={classes.actions} onClick={() => this.props.editUser(aUser)}>edit</p>
+        <p
+          className={classes.actions}
+          onClick={() => this.props.editUser(aUser)}
+        >
+          edit
+        </p>
       </li>
     ));
   };
 }
 
-export default Userlist;
+export default UserList;
