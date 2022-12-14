@@ -1,0 +1,9 @@
+section {
+    margin: 1rem auto;
+    width: 90%;
+    text-align: center;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    height: 500px;  
+  }

@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice} from "@reduxjs/toolkit";
 
 const initialMatchState = {
   // user: [],
@@ -44,7 +44,7 @@ const authSlice = createSlice({
     //   // console.log(balance);
     //   aState.loggedUserDetails = updatedLoggedUser;
     //   const upDatedUser = user.map((aUser) =>
-
+      
     //     aUser.id === loggedUser.id
     //       ? { ...aUser, balance: aUserBalance.payload}
     //       : aUser

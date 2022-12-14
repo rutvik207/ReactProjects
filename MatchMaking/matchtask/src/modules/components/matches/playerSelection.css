@@ -1,0 +1,22 @@
+.playerBox{
+    display: flex;
+    text-align: left;
+}
+.player-name{
+    margin-left: 30px;
+    }
+.player-role{
+    width: 95px;
+    margin-left: 10px;
+}
+.playerListWrapper {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+  }
+  .submit{
+    margin-top: 50px;
+  }
+  .teamsName{
+    font-size: 30px;
+  }

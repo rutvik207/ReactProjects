@@ -1,0 +1,32 @@
+ .teamNames{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 30px;
+    grid-row-gap: 40px;
+    }
+    .teamList li{
+        list-style: none;
+        font-size: 30px;
+        padding-left: 30px;
+    }
+    .teamList{
+    display: flex;
+    }
+.submitButton{
+    margin-top: 30px;
+    width: 100px;
+}
+.team-wrapper p{
+    color: red;
+    margin-bottom: 30px;
+}
+.teamsDone li {
+    list-style: none;
+}
+.teamsDone{
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    gap: 30px;
+}

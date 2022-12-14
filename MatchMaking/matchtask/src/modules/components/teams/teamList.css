@@ -1,0 +1,19 @@
+.wrapper-div , .team-list{
+    display: flex;
+}
+.playerListBox ul{
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+grid-template-rows: repeat(2, 1fr);
+grid-column-gap: 50px;
+grid-row-gap: 70px;
+}
+.team-list li{
+    list-style: none;
+    margin-top: 10px;
+    font-size: 30px;
+    padding-right: 30px;
+}
+.team-list button{
+ width: 100px;
+}

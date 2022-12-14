@@ -1,0 +1,31 @@
+.movies-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .user1 {
+    display: flex;
+    justify-content: space-between;
+    /* gap: 20px; */
+    flex-direction: row;
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: #230052;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+    width:100%;
+  }
+  .user1 p{
+    width: 200px;
+  }
+  .actions{
+    font: inherit;
+    cursor: pointer;
+    background: grey;
+    border: 1px solid grey;
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 20px;
+  }

@@ -205,7 +205,7 @@ const DashBoard = () => {
     }
   };
   const saving = (aYear) => {
-    const accruedInterest = loggedUser.balance * 0.05 * aYear;
+    const accruedInterest = loggedUser.balance * 0.005 * aYear;
     const savingBalance = loggedUser.balance + accruedInterest;
     console.log(savingBalance);
    const balance = `your future balance is ${savingBalance}`;

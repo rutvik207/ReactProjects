@@ -1,0 +1,19 @@
+.box {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    width: 400px;
+    padding: 35px;
+    transform: translate(-50%, -50%);
+    background: rgb(199, 171, 110);
+    border-radius: 10px;
+}
+
+.form-button {
+    display: flex;
+    gap:30px;
+    justify-content: center;
+}

@@ -1,0 +1,43 @@
+.login-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  padding: 35px;
+  transform: translate(-50%, -50%);
+  background: #c0bac4;
+  box-shadow: 0 15px 25px rgba(143, 124, 236, 0.7);
+  border-radius: 10px;
+}
+
+.login-box h1 {
+  color: white;
+  font-weight: 500;
+  font-size: 40px;
+}
+
+.login-box input {
+  background: 0%;
+  display: block;
+  margin: 20px auto 3px auto;
+  text-align: center;
+  border: 2px solid white;
+  padding: 14px 10px;
+  width: 200px;
+  color: black;
+}
+
+.login-box label {
+  color: white;
+}
+
+.login-box p {
+  color: red;
+  margin: 0px;
+  padding: 0px;
+}
+.login-button{
+  width: 80px;
+  height: 30px;
+}
+

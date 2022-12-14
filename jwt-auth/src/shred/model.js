@@ -1,16 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useRef, useState } from "react";
 import "./model.css";
 
 const TransactionForm = (aProps) => {
-  const[error,errorMsg]=useState()
+  const [error, errorMsg] = useState();
   const amount = useRef();
   const takeMoneyInput = (e) => {
     e.preventDefault();
     const inputAmount = +amount.current.value;
-    const isValidMsg =aProps.checkType(inputAmount);
+    const isValidMsg = aProps.checkType(inputAmount);
     errorMsg(isValidMsg);
-    if(isValidMsg) {
+    if (isValidMsg) {
       return;
     }
     aProps.hideModel();
@@ -34,7 +33,13 @@ const TransactionForm = (aProps) => {
         <p>{error}</p>
         <div className="btn-ls">
           <button onClick={takeMoneyInput} className="btn-form">
-            add
+            {aProps.actionType == "withdraw"
+              ? "withdraw"
+              : aProps.actionType == "deposit"
+              ? "deposit "
+              : aProps.actionType == "neft"
+              ? "transfer"
+              : "showsaving"}
           </button>
           <button onClick={aProps.hideModel} className="btn-form">
             Cancel
