@@ -20,7 +20,6 @@ const Home = () => {
       setFetchErrorMsg(responseOfData.error.message);
       return;
     }
-    console.log("responseOfData===================>", responseOfData);
     dispatch(userActions.storeUsers(responseOfData));
   };
 
@@ -31,7 +30,6 @@ const Home = () => {
       setFetchErrorMsg(responseOfData.error.message);
       return;
     }
-    console.log("responseOfData===================>", responseOfData);
     dispatch(statementAction.storeStatement(responseOfData));
   };
 

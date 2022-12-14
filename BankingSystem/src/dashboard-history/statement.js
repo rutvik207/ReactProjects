@@ -6,18 +6,14 @@ const Statement = () => {
   const [selectedUserStatements, setSelectedUserStatements] = useState();
   const loggedUser = useSelector((aState) => aState.user.loggedUserDetails);
   const stateMents = useSelector((aState) => aState.statement.stateMents);
-  let availableBalance =loggedUser.start_balance;
+  let availableBalance = loggedUser.start_balance;
 
   useEffect(() => {
     const selectedUserStatements = stateMents.filter(
       (aData) => aData.userId === loggedUser.id
     );
-    console.log(
-      "selectedUserStatements=======================",
-      selectedUserStatements
-    );
+
     setSelectedUserStatements(selectedUserStatements);
-    console.log("loggedUser====================", loggedUser);
   }, []);
   const getCharge = (aAmount, aCharge) => {
     const charge = (aCharge / 100) * aAmount;
@@ -65,26 +61,35 @@ const Statement = () => {
     );
   };
 
-
-  const renderUpdateBalance =(type,amount)=>{
-   const updatedBalance = type === "deposit" ? (availableBalance -
-      (type === "withdraw"
-        ? withdraw(amount)
-        : type === "deposit"
-        ? deposit(amount)
-        : neft(amount)) + amount) : (availableBalance -
+  const renderUpdateBalance = (type, amount) => {
+    const updatedBalance =
+      type === "deposit"
+        ? availableBalance -
           (type === "withdraw"
             ? withdraw(amount)
             : type === "deposit"
             ? deposit(amount)
-            : neft(amount))-amount)
-            availableBalance =updatedBalance;
-            return updatedBalance;
-  }
+            : neft(amount)) +
+          amount
+        : availableBalance -
+          (type === "withdraw"
+            ? withdraw(amount)
+            : type === "deposit"
+            ? deposit(amount)
+            : neft(amount)) -
+          amount;
+    availableBalance = updatedBalance;
+    return updatedBalance;
+  };
   const renderStatement = () => {
     return selectedUserStatements.map((aData, index) => {
       return (
-        <tr className={(aData.type === "withdraw" || aData.type === "neft") ? "red" : "green"} key={aData.id}>
+        <tr
+          className={
+            aData.type === "withdraw" || aData.type === "neft" ? "red" : "green"
+          }
+          key={aData.id}
+        >
           <td>{index + 1}</td>
           <td>{aData.type}</td>
           <td>{aData.amount}</td>
@@ -95,9 +100,7 @@ const Statement = () => {
               ? deposit(aData.amount)
               : neft(aData.amount)}
           </td>
-          <td>
-            {renderUpdateBalance(aData.type,aData.amount)}
-          </td>
+          <td>{renderUpdateBalance(aData.type, aData.amount)}</td>
         </tr>
       );
     });

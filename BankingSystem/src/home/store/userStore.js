@@ -10,7 +10,6 @@ const userSlice = createSlice({
   initialState: initialMatchState,
   reducers: {
     storeUsers(aState, aUsers) {
-      console.log("aUserStore=========================>", aUsers);
       aState.user = aUsers.payload;
     },
     storeLoggedUser(aState, aUser) {
@@ -19,12 +18,10 @@ const userSlice = createSlice({
     upDateBalance(aState, aUserBalance) {
       const user = current(aState.user);
       const loggedUser = current(aState.loggedUserDetails);
-      // let balance = loggedUser.balance + aUserBalance.payload;
       const updatedLoggedUser = {
         ...loggedUser,
         balance: aUserBalance.payload,
       };
-      // console.log(balance);
       aState.loggedUserDetails = updatedLoggedUser;
       const upDatedUser = user.map((aUser) =>
         aUser.id === loggedUser.id

@@ -15,21 +15,17 @@ const DashBoard = () => {
   const setUserActionType = (e) => {
     e.preventDefault();
     const takeType = e.target.value;
-    console.log(takeType);
     setActionType(takeType);
     setShowModel(!showModel);
   };
 
   const hideModel = () => {
-    console.log("rutvik");
     setShowModel(!showModel);
   };
 
   const checkType = (aAmount) => {
     if (actionType === "withdraw") {
-      console.log(aAmount);
-      const isValidMsg= withdraw(aAmount);
-      console.log(isValidMsg);
+      const isValidMsg = withdraw(aAmount);
       return isValidMsg;
     }
     if (actionType === "deposit") {
@@ -37,20 +33,16 @@ const DashBoard = () => {
       return;
     }
     if (actionType === "neft") {
-      const isValidMsg= neft(aAmount);
-      console.log(isValidMsg);
+      const isValidMsg = neft(aAmount);
       return isValidMsg;
     }
     if (actionType === "saving") {
-      const isValidMsg= saving(aAmount);
-      console.log(isValidMsg);
+      const isValidMsg = saving(aAmount);
       return isValidMsg;
     }
   };
 
   const addStatement = async (aStatement, aAddBalance) => {
-    console.log(aStatement);
-    console.log(loggedUser.id);
     const responseOfApi = await fetch("http://localhost:3000/history", {
       method: "POST",
       body: JSON.stringify({
@@ -64,7 +56,6 @@ const DashBoard = () => {
       },
     });
     const responseOfData = await responseOfApi.json();
-    console.log(responseOfData);
     if (!responseOfApi.ok) {
       setError(responseOfData.error.message);
       return;
@@ -92,7 +83,6 @@ const DashBoard = () => {
       }
     );
     const responseOfData = await responseOfApi.json();
-    console.log(responseOfData);
     if (!responseOfApi.ok) {
       setError(responseOfData.error.message);
       return;
@@ -116,14 +106,10 @@ const DashBoard = () => {
   };
 
   const withdraw = (aAmount) => {
-    console.log(typeof loggedUser.balance);
-    console.log(typeof aAmount);
-    console.log(aAmount);
     let statement, balance;
     switch (true) {
       case loggedUser.balance <= aAmount:
-        console.log("ghuysoke nay");
-        const errorMsg="sorry sir you dont have a enough balance";
+        const errorMsg = "sorry sir you dont have a enough balance";
         return errorMsg;
       case aAmount >= 10000 && aAmount <= 19999:
         statement = getStatement(aAmount);
@@ -151,31 +137,6 @@ const DashBoard = () => {
         editUserAccount(balance);
         break;
     }
-    // if(loggedUser.balance <= amount){
-    //   setError("sorry sir you dont have a enough balance");
-    //   return;
-    // }
-    // if (amount >= 10000 && amount <= 19999) {
-    //   const statement = getStatement(amount);
-    //   const balance = getBalance(amount,1)
-    //   addStatement(statement,balance);
-    //   return;
-    // }
-    // if(amount >= 20000 && amount <= 39999){
-    //   const statement = getStatement(amount);
-    //   const balance = getBalance(amount,2)
-    //   addStatement(statement,balance);
-    //   return;
-    // }
-    // if(amount>=40000){
-    //   const statement = getStatement(amount);
-    //   const balance = getBalance(amount,5)
-    //   addStatement(statement,balance);
-    //   return;
-    // }
-    // const statement = getStatement(amount);
-    // const balance = getBalance(amount,0)
-    // addStatement(statement,balance);
   };
   const deposit = (aAmount) => {
     const charge = (1 / 100) * aAmount;
@@ -188,7 +149,7 @@ const DashBoard = () => {
     let statement, balance;
     switch (true) {
       case loggedUser.balance <= aAmount:
-        const errorMsg="sorry sir you dont have a enough balance";
+        const errorMsg = "sorry sir you dont have a enough balance";
         return errorMsg;
       case aAmount <= 50000:
         statement = getStatement(aAmount);
@@ -207,9 +168,8 @@ const DashBoard = () => {
   const saving = (aYear) => {
     const accruedInterest = loggedUser.balance * 0.005 * aYear;
     const savingBalance = loggedUser.balance + accruedInterest;
-    console.log(savingBalance);
-   const balance = `your future balance is ${savingBalance}`;
-   return balance;
+    const balance = `your future balance is ${savingBalance}`;
+    return balance;
   };
   return (
     <>
@@ -259,9 +219,6 @@ const DashBoard = () => {
 
       {showModel && (
         <TransactionForm
-        // rutvik={rutvik}
-          // message={message}
-          // errorMsg={error}
           actionType={actionType}
           checkType={checkType}
           hideModel={hideModel}
