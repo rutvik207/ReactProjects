@@ -49,10 +49,10 @@ const Home = () => {
           <p>{fetchErrorMsg}</p>
         </div>
       )}
-      <button className="loginHome1" onClick={redirectToLogin}>
+      <button className="login-btn" onClick={redirectToLogin}>
         Login
       </button>
-      <button className="loginHome2" onClick={redirectToRegistration}>
+      <button className="onCancel-btn" onClick={redirectToRegistration}>
         Register
       </button>
     </div>

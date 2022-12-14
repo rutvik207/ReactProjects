@@ -90,10 +90,10 @@ const LoginForm = () => {
               <p className="errorField">{errorMsg.aadharNumberErrorMsg}</p>
               <p className="errorField">{errorMsg.loginErrorMsg}</p>
               <div className="btn-ls">
-                <button type="submit" className="btn" onClick={onLogin}>
+                <button className="btn" onClick={onLogin}>
                   Login
                 </button>
-                <button type="submit" className="btn" onClick={onAbort}>
+                <button className="btn" onClick={onAbort}>
                   Cancel
                 </button>
               </div>

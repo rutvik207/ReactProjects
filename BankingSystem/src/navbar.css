@@ -20,3 +20,22 @@
   background: #2B75BB;
   color: #fff;
 }
+.logout-btn:not([disabled]):hover {
+  box-shadow: -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+}
+.logout-btn {
+  position: absolute;
+  top: 30px;
+  right: 83px;
+  width: 100px;
+  background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
+  border: 0;
+  border-radius: 12px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 2.5;
+  padding: 0 1rem;
+}

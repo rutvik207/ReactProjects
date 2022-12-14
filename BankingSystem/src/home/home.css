@@ -7,8 +7,8 @@
 
 }
 
-.loginHome1,
-.loginHome2 {
+.login-btn,
+.onCancel-btn {
   background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
   border: 0;
   border-radius: 12px;
@@ -34,23 +34,23 @@
 }
 
 
-.loginHome1 {
+.login-btn {
   position: absolute;
   top: 35%;
   left: 39%;
   width: 100px;
 }
 
-.loginHome2 {
+.onCancel-btn {
   position: absolute;
   top: 35%;
   right: 33%;
 }
 
-.loginHome1:not([disabled]):hover {
+.login-btn:not([disabled]):hover {
   box-shadow: -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
 }
 
-.loginHome2:not([disabled]):hover {
+.onCancel-btn:not([disabled]):hover {
   box-shadow: -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
 }
