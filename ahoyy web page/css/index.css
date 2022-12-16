@@ -1,0 +1,477 @@
+:root {
+  --white: #ffffff;
+  --purple: rgb(81, 52, 255);
+  --light-grayy: rgb(237, 237, 237);
+  --ultra-light-gray: rgb(240, 240, 240);
+  --light-shade-gray: rgb(220, 220, 220);
+  --white-smoke: rgb(249, 249, 249);
+  --pearl: rgb(240, 240, 240);
+  --darky-yellow: rgb(153, 152, 93);
+  --orange: rgb(255, 122, 47);
+  --button-gray: rgb(216, 216, 216);
+  --font-gray: rgb(253, 255, 255);
+  --almond: rgb(245, 219, 204);
+  --skyblue: rgb(195, 235, 237);
+  --gray: rgb(199, 199, 199);
+  --dark-gray: rgb(79, 79, 79);
+  --teal-blue: rgb(243, 243, 243);
+  --black: rgb(21, 21, 21);
+  --light-gray: rgb(88, 88, 88);
+  --shade-gray: rgb(38, 38, 38);
+  --whiteshade-gray: rgb(244, 244, 244);
+}
+
+/* -----------------------------COMMON CSS------------------------------------- */
+.max-width-container {
+  max-width: 1280px;
+  margin: 0px auto;
+  padding: 0 40px;
+}
+
+.fix-padding {
+  padding: 0px 75px;
+}
+
+.box-emoji {
+  border: 1px solid #ececec;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+}
+
+.fa-file {
+  margin-left: 5px;
+  color: var(--button-gray);
+}
+
+.proposal-button {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  background-color: var(--purple);
+  color: var(--font-gray);
+}
+
+main hr {
+  border: 0.3px solid var(--whiteshade-gray);
+  margin: 0px 75px;
+}
+
+/*-------------------------------------------------------NAV-BAR & HEADER-------------------------*/
+.header .fa-bars{
+  display: none;
+}
+.nav-logo h3,
+.footer-logo h3 {
+  display: inline-block;
+}
+
+p {
+  margin: 0px;
+  padding: 0px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header {
+  padding: 20px 0px;
+}
+
+header ul {
+  display: flex;
+  gap: 40px;
+}
+
+li {
+  list-style: none;
+}
+
+.button {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  background-color: var(--light-grayy);
+}
+
+/*-------------------------------------------------------HERO-SECTION CSS-------------------------*/
+
+.hero-image img {
+  width: 280px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 25px;
+}
+
+.hero-image {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 130px;
+  flex-wrap: wrap;
+}
+
+.hero-image img:nth-child(2),
+.hero-image img:nth-child(4) {
+  margin-top: 50px;
+}
+
+.hero-title h1 {
+  font-size: 69px;
+}
+
+.hero-title button {
+  background-color: var(--purple);
+  color: var(--font-gray);
+}
+
+/* ...............................DIGITAL HEADING TEXT CSS............................... */
+
+.digital-marketing-text-container {
+  position: relative;
+}
+
+.branding-text-container {
+  position: absolute;
+  bottom: 90px;
+  color: var(--ultra-light-gray);
+}
+
+.digital-marketing-text-container {
+  margin-top: 120px;
+}
+
+.social-ads-text-container {
+  color: var(--light-shade-gray);
+  position: absolute;
+  bottom: 45px;
+}
+
+.digital-marketing-paragraph-text {
+  position: relative;
+  font-size: 45px;
+  font-weight: 550;
+}
+
+.Marketing-text-container {
+  position: relative;
+  color: var(--purple);
+}
+
+/* ...............................BOX CONTAINER CSS............................... */
+
+.marketing-box-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.box {
+  margin: 60px 0px;
+}
+
+.box-title {
+  margin-top: 25px;
+}
+
+.box-details {
+  margin: 15px 0px;
+  color: rgb(122, 122, 122);
+  line-height: 1.5em;
+}
+
+.box a {
+  color: var(--purple);
+}
+
+/* ...............................BRAND CONTAINER CSS............................... */
+.brand-container {
+  display: flex;
+  gap: 90px;
+}
+
+.brand-right-column .brand-logo {
+  display: flex;
+  gap: 50px;
+  margin-bottom: 20px;
+}
+
+.brand-logo div {
+  background-color: var(--dark-gray);
+  border-radius: 50%;
+  position: relative;
+  width: 60px;
+  height: 60px;
+  font-size: 25px;
+}
+
+.brand-logo i {
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.achieve-wrapper {
+  background-color: var(--white-smoke);
+  border-radius: 40px;
+  padding-top: 60px;
+}
+
+.brand-left-column p:nth-child(1) {
+  font-size: 220px;
+  font-weight: 700;
+}
+
+.brand-left-column p:nth-child(2) {
+  font-size: 42px;
+}
+
+.brand-right-column {
+  padding-top: 45px;
+}
+
+.brand-logo .fa {
+  color: var(--darky-yellow);
+}
+
+/*..............................ACHIVEMENTS and SPECIALITIES...............................................*/
+
+.Specialities-section {
+  display: flex;
+  gap: 90px;
+}
+
+.specialities-image-section img {
+  width: 450px;
+  height: 300px;
+  border-radius: 20px;
+}
+
+.specialities-achievements-container {
+  background-color: var(--pearl);
+  border-radius: 40px;
+  padding: 80px 0px;
+  margin-top: 30px;
+}
+
+.specialities h3 {
+  font-size: 46px;
+  font-weight: 550;
+  line-height: 45px;
+  margin-bottom: 25px;
+}
+
+.specialities li {
+  padding: 7px 0px;
+}
+
+.specialities button {
+  margin-top: 20px;
+}
+
+.specialities ul li i {
+  color: var(--orange);
+}
+
+.acheivement-section {
+  display: flex;
+  gap: 100px;
+  margin-top: 50px;
+}
+
+.acheivement-emoji {
+  background-color: white;
+  margin: 25px 0px;
+}
+
+.acheivement-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.acheivement-details {
+  line-height: 25px;
+  color: var(--light-gray);
+}
+
+/*............................RETENTION-GRAPH CSS.................................................*/
+
+
+
+.retention-rate-wrapper {
+  display: flex;
+  margin: 100px 0px;
+}
+
+.ratio-count-container,
+.ratio-graph-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.ratio-count-container p {
+  padding-right: 40px;
+}
+
+.ratio-count-container h1 {
+  font-size: 220px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.ratio-count-container h3 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.ratio-count-container h4 {
+  font-size: 23px;
+  margin-bottom: 10px;
+}
+
+.ratio-count-container p,
+.ratio-graph-container p,
+.growth-right-column p {
+  line-height: 25px;
+  color: var(--light-gray);
+}
+
+.graph-container {
+  display: flex;
+  height: 350px;
+  justify-content: space-between;
+}
+
+.ratio-graph-container .graph-container .column {
+  background-color: var(--teal-blue);
+  border-radius: 15px 15px 0px 0px;
+  position: relative;
+  margin: 0px 10px;
+  width: 100px;
+}
+
+.graph-container .column .sub-column {
+  border-radius: 15px 15px 0px 0px;
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+}
+
+.graph-container .column .column-1a {
+  background-color: var(--almond);
+  height: 70%;
+}
+
+.graph-container .column .column-2a {
+  background-color: var(--skyblue);
+  height: 27%;
+}
+
+.graph-container .column .column-3a {
+  background-color: var(--purple);
+  height: 85%;
+}
+
+.graph-container .column .column-4a {
+  background-color: var(--gray);
+  height: 52%;
+}
+
+/*-------------------------------------------GROWTH WITH US SECTION CSS------------------------------------------------------------------*/
+
+.growth-container {
+  display: flex;
+  margin: 100px 0px;
+}
+
+.growth-left-column p {
+  font-size: 42px;
+  margin: 0;
+  font-weight: 550;
+  padding-right: 70px;
+}
+
+.growth-right-column,
+.growth-left-column {
+  flex: 1;
+}
+
+.growth-right-column p {
+  margin-bottom: 50px;
+}
+
+/*---------------------------------FOOTER CSS----------------------------------------------*/
+footer {
+  background-color: rgb(21, 21, 21);
+}
+
+.footer-list,
+.social-icon ,.footer-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-list li {
+  line-height: 30px;
+  color: var(--font-gray);
+}
+
+.footer-list ul {
+  margin: 60px 0px;
+}
+
+.footer-header {
+  padding-top: 70px;
+}
+
+.footer-emoji h3 {
+  color: var(--font-gray);
+}
+
+
+.social-icon {
+  gap: 20px;
+}
+
+.social-icon .fa {
+  color: var(--font-gray);
+}
+
+.footer-list ul li:nth-child(1) {
+  font-weight: 700;
+}
+
+footer hr {
+  border: 0.3px solid var(--shade-gray);
+  margin: 0px 75px;
+}
+
+.policy-container,
+.cookie_privacy-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.policy-container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.policy-container {
+  color: var(--light-gray);
+}

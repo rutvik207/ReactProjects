@@ -1,0 +1,269 @@
+@media screen and (max-width: 1279px) {
+    .fix-padding {
+        padding: 0px 60px;
+    }
+
+    header ul {
+        display: none;
+    }
+
+    .header .fa-bars {
+        display: block;
+    }
+
+    .hero-title h1 {
+        font-size: 40px;
+    }
+
+    .hero-image img {
+        width: 180px;
+        height: 300px;
+    }
+
+    .hero-image {
+        flex-wrap: nowrap;
+    }
+
+    .hero-image img:nth-child(2),
+    .hero-image img:nth-child(4) {
+        margin-top: 50px;
+    }
+
+    .branding-text-container,
+    .social-ads-text-container {
+        display: none;
+    }
+
+    .Specialities-section {
+        gap: 30px;
+    }
+
+    .specialities-image-section img {
+        width: 300px;
+        height: 350px;
+    }
+
+    .specialities h3 {
+        font-size: 33px;
+        margin-bottom: 5px;
+    }
+
+    .brand-left-column p:nth-child(1) {
+        font-size: 200px;
+    }
+
+    .brand-left-column p:nth-child(2) {
+        font-size: 40px;
+    }
+
+    .brand-container {
+        gap: 30px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .brand-right-column .brand-logo {
+        gap: 70px;
+    }
+
+    .brand-right-column {
+        padding-top: 0px;
+    }
+
+    .specialities-image-section img {
+        width: 350px;
+        height: 450px;
+    }
+
+    .Specialities-section {
+        gap: 60px;
+    }
+
+    .ratio-count-container h1 {
+        font-size: 150px;
+    }
+
+    .graph-container {
+        height: 275px;
+    }
+
+    .ratio-graph-container .graph-container .column {
+        width: 70px;
+    }
+
+    .growth-left-column p {
+        font-size: 35px;
+    }
+
+    footer .footer-logo {
+        justify-content: center;
+    }
+
+    .footer-list li:not(:first-child) {
+        display: none;
+    }
+
+    .footer-list {
+        height: 100px;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin: 20px 0px;
+    }
+
+    .footer-list ul {
+        margin: 5px;
+    }
+
+    .footer-header {
+        display: inline;
+        text-align: center;
+    }
+
+    .social-icon {
+        justify-content: center;
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .fix-padding {
+        padding: 0px 30px;
+    }
+
+    .hero-image img {
+        width: 150px;
+        height: 250px;
+    }
+
+    .branding-text-container,
+    .social-ads-text-container {
+        display: none;
+    }
+
+    .digital-marketing-paragraph-text {
+        font-size: 35px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .nav-logo h3 {
+        display: none;
+    }
+
+    .max-width-container {
+        padding: 0 20px;
+    }
+
+    .button {
+        padding: 7px 10px;
+    }
+
+    .fix-padding {
+        padding: 0px 10px;
+    }
+
+    .hero-image {
+        padding-top: 80px;
+        flex-wrap: wrap;
+    }
+
+    .hero-title h1 {
+        font-size: 25px;
+    }
+
+    .hero-image img:nth-child(2),
+    .hero-image img:nth-child(4) {
+        margin: 0;
+    }
+
+    .hero-image img:nth-child(1),
+    .hero-image img:nth-child(2) {
+        margin-bottom: 20px;
+    }
+
+    .digital-marketing-paragraph-text {
+        font-size: 22px;
+    }
+
+    .specialities-image-section img {
+        width: 300px;
+        height: 300px;
+    }
+
+    .marketing-box-container,
+    .Specialities-section,
+    .acheivement-section,
+    .retention-rate-wrapper,
+    .growth-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .box {
+        margin: 20px 0px;
+    }
+
+    .brand-left-column p:nth-child(1) {
+        font-size: 130px;
+    }
+
+    .brand-left-column p:nth-child(2) {
+        font-size: 25px;
+    }
+
+    .brand-right-column .brand-logo,
+    .marketing-box-container {
+        gap: 0;
+    }
+
+    .brand-container {
+        gap: 30px;
+    }
+
+    main hr {
+        margin: 0px;
+    }
+
+    footer hr {
+        margin: 35px 0px;
+    }
+
+    .acheivement-section {
+        gap: 0;
+    }
+
+    .retention-rate-wrapper {
+        gap: 30px;
+    }
+
+    .ratio-graph-container p {
+        margin-bottom: 20px;
+    }
+
+    .ratio-graph-container .graph-container .column {
+        width: 60px;
+    }
+
+    .growth-left-column p {
+        font-size: 25px;
+        padding-right: 0;
+    }
+
+    .growth-right-column p {
+        margin-top: 30px;
+    }
+
+    .footer-list {
+        display: inline-block;
+    }
+
+    footer .policy-container {
+        display: inline;
+        text-align: center;
+    }
+
+    .policy-container .cookie_privacy-container {
+        justify-content: center;
+        gap: 20px;
+    }
+}
